@@ -18,28 +18,25 @@ Il fossato è il database.
 
 Funziona e testato:
 
-- Schema Pydantic v2 (`ProfiloAzienda`, `Bando`, `EsitoAmmissibilita`) con dimensione UE, sezione ATECO
-  e impresa nuova/da costituire calcolate
+- Schema Pydantic v2 con dimensione UE, sezione ATECO e impresa nuova/da costituire calcolate
 - Motore deterministico: territorio, dimensione, beneficiario, ATECO ammessi/esclusi, soglie di spesa,
-  coerenza categorie, de minimis, requisiti strutturati (automatici/dichiarativi), scadenza rilevante
-  oggi, fit 0-100 spiegato, stima lorda, penalità per requisiti bloccanti non verificabili
-- 9 tool MCP + 1 resource, verificati con un client `mcp` reale su stdio (tools/list, call_tool,
-  errori come `ToolError`, resource read)
-- Catalogo: 16 bandi reali con fonti (vedi `data/bandi_sicilia.json`). Affidabilità: 4 ufficiali,
-  11 secondarie, 1 da verificare (Brevetti+, in attesa dell'avviso attuativo)
-- 19 test verdi; demo su tre profili (officina meccanica RG, startup AI CT, hotel ME)
+  coerenza categorie, de minimis, requisiti strutturati, scadenza rilevante oggi, fit 0-100 spiegato,
+  stima lorda solo dove ha senso darla (`base_calcolo`), penalità per requisiti bloccanti non verificabili
+- 9 tool MCP + 1 resource, verificati con un client `mcp` reale su stdio e su HTTP
+- **Endpoint HTTP pronto per il deploy pubblico**: rate limit per IP, host ammessi, `/health`,
+  log anonimo delle chiamate. Dockerfile, railway.json, render.yaml. Vedi `DEPLOY.md`
+- **Sito generato dal catalogo**: una pagina per bando, indice, llms.txt, sitemap, catalogo.json.
+  Rigenerato a ogni avvio, servito dallo stesso processo
+- Catalogo: 26 schede (9 ufficiali, 13 secondarie, 4 da verificare) in due file, nazionali e Sicilia
+- 37 test verdi; demo su tre profili; `verifica_fonti.py` conferma 48 fonti su 48 raggiungibili
 
 Ranking della demo (sanity check dopo ogni modifica al motore):
 
-- Officina 25.62, 14 ULA, 900k macchinari+digitale → Investimenti Sostenibili 4.0 (96), Nuova Sabatini (84),
-  Voucher Cloud (75), Cultura Cresce (61), Conciliazione (50)
-- Startup 62.01, 3 ULA, 2024, innovativa, titolare 29 → Smart&Start (86), Voucher Cloud (85),
-  Sabatini (74), ON (73), Cultura Cresce (51)
-- Hotel 55.10, 22 ULA, 1.8M energia → Conto Termico (89, senza stima: dipende dai massimali),
-  Green Tour (65, chiude tra 12 gg), Conciliazione (50), EUIPO SME Fund (42), Sviluppo Competenze (40)
-
-Rispetto al ranking di partenza sono usciti ZES Unica (finestra 2026 chiusa il 30/05) e Resto al Sud 2.0
-(riservato a imprese nuove o da costituire): entrambe le uscite sono corrette e spiegate nei commit.
+- Officina 25.62, 14 ULA, 900k → Investimenti Sostenibili 4.0 (96), Nuova Sabatini (84),
+  Transizione 5.0 (80), Voucher Cloud (75), SIMEST (74)
+- Startup 62.01, 3 ULA, 2024 → Smart&Start (86), Voucher Cloud (85), SIMEST (74), Sabatini (74), ON (73)
+- Hotel 55.10, 22 ULA, 1.8M energia → Conto Termico (89, senza stima), Transizione 5.0 (80),
+  Green Tour (65), Fondo di garanzia (63), Conciliazione (50)
 
 ## Decisioni prese (e perché)
 
@@ -90,35 +87,53 @@ Ancora aperti:
 
 - [x] **Chiudere i problemi noti 1-5** (dati) — fatto il 18/09/2026. Criterio rispettato: nessun bando
       con `da_verificare` tra i primi 5 per i tre profili demo, e tre test nuovi sul requisito
-      "impresa nuova" di Resto al Sud (esclusione, impresa da costituire, computed field).
-- [ ] **`.mcp.json` nel repo + istruzioni di 5 righe** per collegarlo a Claude Desktop e Claude Code.
-      Criterio: un commercialista non tecnico ci arriva da solo con il README.
+      "impresa nuova" di Resto al Sud.
+- [x] **`.mcp.json` nel repo + istruzioni** — fatto. Il file aveva `"type": "stdio"`, che faceva fallire
+      il collegamento in Claude Code, e `python`, che su macOS non esiste. Con l'endpoint pubblico la
+      strada per un non tecnico è ancora più corta: un solo URL, niente da installare (vedi `DEPLOY.md`).
+- [x] **Log anonimo delle chiamate** — fatto, `bandi_mcp/uso.py` come middleware MCP e
+      `scripts/report_uso.py` per leggerlo. Registra tool, esito, durata e due conteggi; niente del
+      profilo, con un test che fallisce se qualcuno aggiunge una colonna identificabile.
 - [ ] **Tool `profilo_da_testo(testo)`**: euristiche (regex) che estraggono P.IVA, ATECO, forma giuridica,
-      data costituzione, addetti da una visura incollata come testo. Niente LLM: l'agente ha già letto la visura,
-      qui serve solo la normalizzazione. Criterio: test con 3 visure sintetiche.
-- [ ] **Log anonimo delle chiamate** (tool, timestamp, esito, n. campi mancanti) in un file locale/SQLite.
-      Serve per misurare il test a 2 settimane. Criterio: `scripts/report_uso.py` stampa chiamate/giorno per tool.
+      data costituzione, addetti da una visura incollata come testo. Niente LLM: l'agente ha già letto la
+      visura, qui serve solo la normalizzazione. Criterio: test con 3 visure sintetiche.
+- [ ] **Deploy vero su bandi.prodgai.com**: richiede account e DNS, vedi `DEPLOY.md`. Il Dockerfile non è
+      mai stato costruito (Docker non disponibile sulla macchina di sviluppo).
 
 ### P1 — copertura dati
 
+Il catalogo è il fossato: 26 schede sono un inizio, non un prodotto.
+
+- [x] Un secondo file `data/bandi_nazionali.json` separando nazionali da regionali — fatto, 10 schede
+- [x] Script `scripts/verifica_fonti.py`: apre ogni URL di `fonti`, segnala 404 e schede con
+      `ultimo_controllo` oltre soglia. Esce con codice 1, da mettere in CI settimanale
+- [ ] **Altre misure nazionali già individuate e non ancora inserite**: Fondo impresa femminile,
+      Contratto di sviluppo, Economia circolare, Italia Economia Sociale, Voucher 3I, credito d'imposta
+      incubatori e acceleratori certificati, FRI-Tur e turismo, ISMEA per l'agricoltura, ICE per l'export,
+      Fondo Nuove Competenze, le singole linee SIMEST (oggi c'è una scheda ombrello sola)
 - [ ] Bandi camerali siciliani (voucher digitalizzazione CCIAA Sud Est, Palermo-Enna, Messina)
 - [ ] PR FESR Sicilia 2021-2027 (avvisi Dipartimento Attività Produttive: Digit Imprese, ecc.)
 - [ ] GAL siciliani con sportelli aperti
-- [ ] Un secondo file `data/bandi_nazionali.json` separando nazionali da regionali
-- [ ] Script `scripts/verifica_fonti.py`: apre ogni URL di `fonti`, segnala 404 e schede con
-      `ultimo_controllo` > 30 giorni
+- [ ] Smaltire le 4 schede `da_verificare`: Brevetti+, Disegni+, Marchi+ (avvisi attuativi attesi
+      entro fine settembre 2026) e filiera moda (decreto direttoriale non pubblicato)
 
-### P2 — prodotto
+### P2 — prodotto e distribuzione
 
+- [x] `--http` per l'uso senza installazione — fatto, ma **aperto senza autenticazione** per scelta:
+      ogni attrito taglia l'adozione, e il rate limit per IP basta finché l'istanza è una
+- [ ] Pubblicazione nel registry MCP ufficiale (`server.json` è pronto, namespace `com.prodgai/bandi`,
+      serve l'autenticazione DNS sul dominio apex) e nelle directory PulseMCP, Glama, Smithery, mcp.so.
+      **Da fare per ultimo**: le schede vengono messe in cache e la prima impressione si brucia una volta
+- [ ] Google Search Console e Bing Webmaster Tools con la sitemap, più qualche link in entrata reale
 - [ ] Ingestione semi-automatica: scraper dei portali → normalizzazione con LLM (fuori dal motore, in uno
       script separato) → PR con `affidabilita_dati: "da_verificare"` → revisione umana → merge
-- [ ] `--http` dietro autenticazione (token per consulente) per l'uso senza installazione
 - [ ] Profili salvati per consulente (N aziende) + `scadenze_prossime` schedulato la mattina
-- [ ] Pubblicazione nelle directory connettori (Claude, ChatGPT apps)
+- [ ] Rate limit e log condivisi, se un giorno le istanze diventano più di una: oggi sono in memoria
 
 ## Non fare
 
-- UI, landing page, dashboard: il prodotto è il server + il dato
+- Una UI applicativa. Il sito generato è il catalogo reso leggibile ai crawler, non un portale:
+  niente form, niente ricerca, niente filtri, niente account. Il confine è in `CLAUDE.md`
 - LLM dentro `matcher.py` o nei tool
 - Rinominare tool/campi di output senza aggiornare README e test
 

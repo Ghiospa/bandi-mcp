@@ -1,0 +1,13 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "com.prodgai/bandi",
+  "title": "Bandi — finanza agevolata italiana",
+  "description": "Bandi e incentivi per imprese italiane in forma strutturata: dato il profilo di un'azienda restituisce le misure compatibili ordinate per fit, il motivo di ogni esclusione con valore atteso e trovato, la scadenza che conta oggi e uno scheletro di domanda. Motore deterministico, senza LLM. Ogni scheda dichiara fonti, data dell'ultimo controllo e affidabilità del dato.",
+  "version": "0.1.0",
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://bandi.prodgai.com/mcp"
+    }
+  ]
+}

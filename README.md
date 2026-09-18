@@ -4,8 +4,11 @@ Finanza agevolata **agent-first**. Nessun portale, nessun filtro, nessuna newsle
 un server MCP che l'agente dell'utente (Claude, ChatGPT, altro) interroga con il profilo
 dell'azienda e da cui riceve risposte strutturate, con i motivi.
 
-Catalogo iniziale: 16 misure accessibili alle imprese siciliane (nazionali + regionali),
-verificate al 18/09/2026, ognuna con fonti e data dell'ultimo controllo.
+Catalogo: 26 misure — nazionali aperte alle PMI di tutta Italia più le regionali siciliane —
+verificate al 18/09/2026, ognuna con fonti, data dell'ultimo controllo e affidabilità del dato.
+
+**Endpoint pubblico** (quando è online): `https://bandi.prodgai.com/mcp`, streamable HTTP,
+nessuna autenticazione. Vedi [DEPLOY.md](DEPLOY.md) per metterlo online e farsi trovare.
 
 ```
 consulente → il suo Claude → cerca_bandi(profilo) → [bandi ordinati per fit, motivi, scadenze, stima]
@@ -34,7 +37,7 @@ su venti portali in PDF. Chi li pulisce per primo ha un fossato.
 git clone <repo> && cd bandi-mcp
 pip install -r requirements.txt
 python scripts/demo.py          # tre profili tipo, senza MCP
-python -m pytest -q             # 19 test
+python -m pytest -q             # 37 test
 python -m bandi_mcp.server      # server MCP su stdio
 python -m bandi_mcp.server --http   # streamable HTTP su :8000 per client remoti
 ```
@@ -102,10 +105,14 @@ bandi_mcp/
   matcher.py   motore deterministico: territorio, dimensione UE, ATECO, soglie, requisiti, de minimis, scadenze, fit
   store.py     carica data/*.json
   server.py    tool MCP (mcp>=2, fallback su FastMCP 1.x)
+  http_app.py  app HTTP pubblica: rate limit, host ammessi, /health, mount del sito
+  uso.py       log anonimo delle chiamate (middleware MCP), mai dati di profilo
+  sito.py      pagine HTML generate dal catalogo, per i crawler
 data/
-  bandi_sicilia.json   16 bandi normalizzati con fonti
+  bandi_nazionali.json  misure nazionali aperte alle PMI
+  bandi_sicilia.json    misure regionali siciliane e nazionali con riserve per il Sud
 scripts/demo.py        tre profili tipo (officina, startup AI, hotel)
-tests/                 19 test sul motore e sul catalogo
+tests/                 37 test su motore, catalogo, log d'uso e sito
 examples/              config Claude Desktop, profilo di esempio
 ```
 
@@ -120,9 +127,11 @@ Campi che fanno la differenza:
 - `territori`: regioni ammesse, `["IT"]` per tutta Italia
 - `dimensioni_ammesse`, `ateco_ammessi` (prefissi: sezione `"C"` o divisione `"55"`), `ateco_esclusi`
 - `spesa_min_eur` / `spesa_max_eur` / `contributo_max_eur` / `intensita_max_pct` / `intensita_fondo_perduto_pct`
-- `base_calcolo`: `"spesa_ammissibile"` (default: intensità × spesa) oppure `"massimali_specifici"` quando
-  l'importo dipende da massimali per unità (€/kW, €/m²) e tetti per intervento. Con `"massimali_specifici"`
-  il motore non restituisce una stima e aggiunge una verifica manuale: meglio nessuna cifra di una sbagliata
+- `base_calcolo`: come si determina il beneficio, e quindi se ha senso stimarlo dal totale di spesa.
+  `"spesa_ammissibile"` (default: intensità × spesa) è l'unico caso in cui il motore dà una cifra.
+  `"massimali_specifici"` (massimali per unità, €/kW o €/m²), `"maggiorazione_ammortamento"` (deduzione
+  fiscale: dipende da aliquota e capienza) e `"garanzia"` (non è una somma, è accesso al credito) fanno
+  restituire `null` e aggiungono una verifica manuale che dice dove sta il calcolo vero
 - `categorie_spesa`: da `CategoriaSpesa` in `schema.py`
 - `calendario`: `apertura_compilazione`, `apertura_invio`, `chiusura`, `ammissibilita_spese_da`
 - `requisiti`: automatici (`campo_profilo` + `operatore` + `valore`) o `dichiarativi`
@@ -130,12 +139,28 @@ Campi che fanno la differenza:
 - `fonti` con almeno un URL, `ultimo_controllo`, `affidabilita_dati`
 
 `python -m pytest` verifica che il catalogo si carichi e che ogni bando abbia fonti.
+`python scripts/verifica_fonti.py` apre ogni URL e segnala link morti e schede non più controllate
+da oltre 45 giorni: esce con codice 1, è pensato per la CI.
+
+## Il sito pubblico
+
+Il server serve anche le pagine HTML generate dal catalogo: una per bando, più indice, `llms.txt`,
+`sitemap.xml`, `robots.txt` e `catalogo.json`. Non è un portale — niente form, niente ricerca, niente
+filtri, niente JavaScript — e si rigenera a ogni avvio, quindi non può dire una cosa diversa dal motore.
+Serve a un caso solo: l'agente che cerca sul web invece di collegare un connettore. Il confine di cosa
+può starci è scritto in `CLAUDE.md`.
+
+```bash
+python scripts/genera_sito.py && python -m http.server -d sito 8080
+```
 
 ## Cosa manca (in ordine)
 
-1. **Ingestione**: oggi il catalogo è curato a mano. Il passo successivo è uno scraper + normalizzazione
-   LLM dei portali regionali (euroinfosicilia, IRFIS, CCIAA, GAL) con revisione umana prima della pubblicazione.
-2. **Copertura**: bandi camerali siciliani (voucher digitalizzazione), PR FESR Sicilia 2021-27, GAL.
+1. **Copertura del catalogo**: 26 schede sono un inizio. Mancano molte misure nazionali (Fondo impresa
+   femminile, Contratto di sviluppo, Economia circolare, Voucher 3I, incubatori certificati, turismo,
+   agricoltura) e tutti i bandi camerali e regionali oltre la Sicilia.
+2. **Ingestione**: oggi il catalogo è curato a mano. Il passo successivo è uno scraper + normalizzazione
+   LLM dei portali (fuori dal motore, in uno script separato) con revisione umana prima della pubblicazione.
 3. **Profilo da P.IVA**: tool `profilo_da_visura(pdf)` che estrae ATECO, addetti, data costituzione, forma giuridica.
 4. **Monitoraggio**: `scadenze_prossime` chiamato da un agente ogni mattina per i profili seguiti da un consulente.
 5. **Hosting**: `--http` dietro autenticazione, così il consulente si collega dal suo Claude senza installare nulla.
