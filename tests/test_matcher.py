@@ -145,3 +145,35 @@ def test_stima_resta_percentuale_della_spesa_dove_ha_senso():
     b = trova_bando("mimit-investimenti-sostenibili-40-2026")
     assert b.base_calcolo == "spesa_ammissibile"
     assert matcher.valuta(b, p, OGGI).stima_agevolazione_eur == 675_000
+
+
+def test_impresa_nuova_o_da_costituire():
+    assert ProfiloAzienda(forma_giuridica="da_costituire").impresa_nuova_o_da_costituire is True
+    assert ProfiloAzienda(data_costituzione=date(2026, 9, 1)).impresa_nuova_o_da_costituire is True
+    assert ProfiloAzienda(data_costituzione=date(2015, 3, 10)).impresa_nuova_o_da_costituire is False
+    assert ProfiloAzienda().impresa_nuova_o_da_costituire is None
+
+
+def test_resto_al_sud_esclude_impresa_gia_avviata():
+    """L'iniziativa va avviata nel mese della domanda o in quello precedente: un'azienda del 2015 è fuori,
+    anche con un titolare di 30 anni."""
+    p = ProfiloAzienda(
+        ateco="25.62", regione="Sicilia", addetti_ula=14, fatturato_ultimo_eur=2_100_000,
+        eta_titolare=30, data_costituzione=date(2015, 3, 10),
+        investimento={"importo_eur": 150_000, "categorie": ["macchinari"]},
+    )
+    e = matcher.valuta(trova_bando("invitalia-resto-al-sud-2-0"), p, OGGI)
+    assert e.esito == "non_ammissibile"
+    motivo = next(m for m in e.motivi_esclusione if m.codice == "IMPRESA_NUOVA")
+    assert (motivo.campo, motivo.atteso, motivo.trovato) == ("impresa_nuova_o_da_costituire", True, False)
+
+
+def test_resto_al_sud_ammette_impresa_da_costituire():
+    p = ProfiloAzienda(
+        ateco="56.10", regione="Sicilia", addetti_ula=2, forma_giuridica="da_costituire", eta_titolare=29,
+        de_minimis_ricevuti_36_mesi_eur=0,
+        investimento={"importo_eur": 100_000, "categorie": ["avvio_impresa"]},
+    )
+    e = matcher.valuta(trova_bando("invitalia-resto-al-sud-2-0"), p, OGGI)
+    assert e.esito != "non_ammissibile"
+    assert not any(m.codice == "IMPRESA_NUOVA" for m in e.motivi_esclusione)

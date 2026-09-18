@@ -149,6 +149,21 @@ class ProfiloAzienda(BaseModel):
 
     @computed_field  # type: ignore[misc]
     @property
+    def impresa_nuova_o_da_costituire(self) -> Optional[bool]:
+        """
+        Vero se l'impresa è ancora da costituire o è stata avviata nel mese corrente o in quello
+        precedente. È il perimetro delle misure di autoimpiego (Resto al Sud 2.0). None quando non
+        si può dire: chi chiama lo vedrà in campi_mancanti, non come un no.
+        """
+        if self.forma_giuridica == "da_costituire":
+            return True
+        mesi = self.eta_impresa_mesi
+        if mesi is None:
+            return None
+        return mesi <= 1
+
+    @computed_field  # type: ignore[misc]
+    @property
     def sezione_ateco(self) -> Optional[str]:
         """Lettera di sezione ATECO (A..U) ricavata dal codice."""
         if not self.ateco:

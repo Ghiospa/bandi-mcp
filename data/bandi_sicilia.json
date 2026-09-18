@@ -291,15 +291,32 @@
       "requisiti": [
         {
           "codice": "ETA_18_35",
-          "descrizione": "Titolare tra 18 e 35 anni",
+          "descrizione": "Titolare da 18 anni compiuti a 35 non compiuti alla data di avvio dell'attività (non alla data della domanda)",
           "campo_profilo": "eta_titolare",
           "operatore": "between",
           "valore": [18, 35],
           "bloccante": true
         },
         {
-          "codice": "RESIDENZA_MEZZOGIORNO",
-          "descrizione": "Residenza nel Mezzogiorno alla presentazione (o trasferimento entro i termini previsti)",
+          "codice": "IMPRESA_NUOVA",
+          "descrizione": "L'iniziativa deve essere avviata nel mese della domanda o in quello precedente e risultare ancora inattiva a quella data: un'impresa già operativa non è ammessa",
+          "campo_profilo": "impresa_nuova_o_da_costituire",
+          "operatore": "true",
+          "bloccante": true
+        },
+        {
+          "codice": "IMPRESA_INATTIVA",
+          "descrizione": "L'attività deve essere inattiva alla data della domanda: fa fede la data di apertura della partita IVA per il lavoro autonomo e quella di iscrizione al Registro Imprese per le società",
+          "tipo": "dichiarativo"
+        },
+        {
+          "codice": "CONDIZIONE_SOGGETTIVA",
+          "descrizione": "Il richiedente deve essere disoccupato, inoccupato, inattivo, in percorso GOL oppure avere un reddito da lavoro sotto la no tax area, e dichiararlo con autocertificazione",
+          "tipo": "dichiarativo"
+        },
+        {
+          "codice": "SEDE_OPERATIVA_MEZZOGIORNO",
+          "descrizione": "Nel Mezzogiorno deve trovarsi la sede operativa dell'attività: non è richiesta la residenza del richiedente",
           "tipo": "dichiarativo"
         }
       ],
@@ -308,14 +325,19 @@
       "documenti": ["Documento d'identità e residenza", "Business plan con piano spese", "Preventivi", "Se già costituita: visura e bilanci"],
       "piattaforma": "Piattaforma Invitalia",
       "fonti": [
-        {"url": "https://www.incentivimpresa.it/resto-al-sud-2-0/", "tipo": "secondaria", "titolo": "Guida Incentivimpresa"},
+        {"url": "https://www.invitalia.it/incentivi-e-strumenti/resto-al-sud-20/cose", "tipo": "ufficiale", "titolo": "Invitalia – Resto al Sud 2.0, cos'è e requisiti"},
+        {"url": "https://www.incentivimpresa.it/resto-al-sud-2-0/", "tipo": "secondaria", "titolo": "Guida Incentivimpresa, agg. 17/09/2026"},
         {"url": "https://www.incentivimpresa.it/bandi-fondo-perduto-attivi/", "tipo": "secondaria", "titolo": "Calendario Incentivimpresa, agg. 16/09/2026"}
       ],
       "ultimo_controllo": "2026-09-18",
-      "affidabilita_dati": "secondaria",
+      "affidabilita_dati": "ufficiale",
       "note": [
         "75% a fondo perduto fino a 120.000 € di programma, 70% tra 120.001 e 200.000 €: quindi max 140.000 € di contributo",
-        "Nessuna componente di finanziamento agevolato (a differenza del vecchio Resto al Sud)"
+        "In alternativa, voucher a fondo perduto fino a 40.000 € (50.000 € con il bonus innovazione)",
+        "5.000 € di servizi di tutoraggio obbligatori, che rientrano nel calcolo del de minimis",
+        "Nessuna componente di finanziamento agevolato (a differenza del vecchio Resto al Sud)",
+        "Sportello aperto dal 15/10/2025 fino a esaurimento dei 356,4 M€: Invitalia non pubblica la capienza residua, verificarla al Contact Center prima di impostare una domanda",
+        "Massimo due domande per richiedente, la seconda solo dopo il rigetto della prima"
       ],
       "tag": ["giovani", "avvio impresa", "mezzogiorno", "fondo perduto"]
     },

@@ -396,9 +396,14 @@ def _valuta_requisito(
             mancanti_bloccanti.append(req.campo_profilo)
         return
     if not ok:
+        # gli operatori true/false non portano un 'valore': senza questo, 'atteso' arriva
+        # all'agente come None e l'esclusione non si spiega da sola
+        atteso = req.valore
+        if atteso is None and req.operatore in ("true", "false"):
+            atteso = req.operatore == "true"
         m = MotivoEsclusione(
             codice=req.codice, descrizione=req.descrizione, campo=req.campo_profilo,
-            atteso=req.valore, trovato=trovato, bloccante=req.bloccante,
+            atteso=atteso, trovato=trovato, bloccante=req.bloccante,
         )
         (esclusioni if req.bloccante else avvertenze).append(m)
 
