@@ -17,6 +17,9 @@ Configurazione via ambiente (tutto opzionale, default adatti allo sviluppo local
     BANDI_RATE_LIMIT     richieste al minuto per IP (default 60, 0 disattiva)
     BANDI_TRUST_PROXY    "0" per NON fidarsi di X-Forwarded-For (default: fidarsi)
     BANDI_LOG_DB         percorso SQLite del log d'uso (vedi uso.py)
+    BANDI_BASE_URL       URL pubblico, per canonical e sitemap (default bandi.prodgai.com)
+    BANDI_SITO           "0" per non servire le pagine HTML generate dal catalogo
+    BANDI_SITO_DIR       dove generarle (default: cartella temporanea, rifatta a ogni avvio)
 
 Avvio: `python -m bandi_mcp.server --http`, oppure
 `uvicorn --factory bandi_mcp.http_app:crea_app --host 0.0.0.0 --port $PORT`.
@@ -25,19 +28,24 @@ Avvio: `python -m bandi_mcp.server --http`, oppure
 from __future__ import annotations
 
 import os
+import tempfile
 import time
 from collections import deque
 from datetime import date
-from typing import Any, Deque
+from pathlib import Path
+from typing import Deque
 
 from starlette.applications import Starlette
 from starlette.requests import Request
 from starlette.responses import JSONResponse, Response
+from starlette.routing import Mount
+from starlette.staticfiles import StaticFiles
 from starlette.types import ASGIApp, Receive, Scope, Send
 
 from mcp.server.transport_security import TransportSecuritySettings
 
 from .server import server
+from .sito import genera
 from .store import carica_catalogo
 
 
@@ -133,11 +141,23 @@ async def health(request: Request) -> Response:
     )
 
 
+def _monta_sito(app: Starlette) -> None:
+    """
+    Le pagine si rigenerano dal catalogo a ogni avvio: non possono divergere dal motore.
+    Il mount va in coda alle rotte, dopo /mcp e /health, che restano prioritarie.
+    """
+    cartella = Path(os.environ.get("BANDI_SITO_DIR") or tempfile.mkdtemp(prefix="bandi-sito-"))
+    genera(cartella)
+    app.routes.append(Mount("/", app=StaticFiles(directory=cartella, html=True), name="sito"))
+
+
 def crea_app() -> Starlette:
     app = server.streamable_http_app(transport_security=_sicurezza_trasporto())
     al_minuto = int(os.environ.get("BANDI_RATE_LIMIT", "60"))
     fidati = os.environ.get("BANDI_TRUST_PROXY", "1") != "0"
     app.add_middleware(LimiteRichieste, al_minuto=al_minuto, fidati_del_proxy=fidati)
+    if os.environ.get("BANDI_SITO", "1") != "0":
+        _monta_sito(app)
     return app
 
 
