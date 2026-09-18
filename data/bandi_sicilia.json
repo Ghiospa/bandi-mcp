@@ -20,7 +20,8 @@
       "dotazione_eur": 447595808.76,
       "dimensioni_ammesse": ["micro", "piccola", "media"],
       "beneficiari": ["impresa"],
-      "ateco_ammessi": ["C"],
+      "ateco_ammessi": ["C", "37.00", "38.1", "38.21", "52", "56.22", "58.2", "61", "62", "63.1", "70", "71", "72", "73", "82.20", "82.92", "95.1", "96.10.1"],
+      "ateco_esclusi": ["12", "20.6", "24.1", "24.2", "24.3", "30.1"],
       "categorie_spesa": ["macchinari", "impianti", "digitale", "efficienza_energetica"],
       "calendario": {
         "apertura_compilazione": "2026-09-10",
@@ -37,7 +38,27 @@
         },
         {
           "codice": "TECNOLOGIE_4_0",
-          "descrizione": "Il programma deve integrare tecnologie abilitanti 4.0 e documentare la sostenibilità ambientale (pesa nella graduatoria di giornata)",
+          "descrizione": "Il programma deve integrare tecnologie abilitanti 4.0 dell'allegato 1 e le spese riconducibili a quelle tecnologie devono essere preponderanti sul totale dei costi ammissibili (art. 6 c. 6 lett. a)",
+          "tipo": "dichiarativo"
+        },
+        {
+          "codice": "FINALITA_PROGRAMMA",
+          "descrizione": "Il programma deve essere diretto ad ampliamento della capacità, diversificazione della produzione verso prodotti mai fabbricati prima, cambiamento fondamentale del processo di un'unità produttiva esistente o realizzazione di una nuova unità produttiva (art. 6 c. 6 lett. b)",
+          "tipo": "dichiarativo"
+        },
+        {
+          "codice": "SPESE_MAX_70_FATTURATO",
+          "descrizione": "Le spese ammissibili non possono superare il 70% del fatturato dell'ultimo bilancio approvato (ultima dichiarazione dei redditi per imprese individuali e società di persone): l'eccedenza resta fuori dalle agevolazioni (art. 6 c. 6 lett. d)",
+          "tipo": "dichiarativo"
+        },
+        {
+          "codice": "SETTORI_ESCLUSI_GBER",
+          "descrizione": "Esclusi i settori dell'art. 13 del Reg. GBER: siderurgia, estrazione del carbone, costruzione navale, fabbricazione di fibre sintetiche, trasporti e relative infrastrutture, produzione e distribuzione di energia (art. 6 c. 4 lett. a)",
+          "tipo": "dichiarativo"
+        },
+        {
+          "codice": "AMBITI_ESCLUSI_FESR",
+          "descrizione": "Esclusi gli ambiti dell'allegato 6 (art. 7 par. 1 Reg. UE 2021/1058): nucleare, attività dell'allegato I della direttiva 2003/87/CE, tabacco, imprese in difficoltà, infrastrutture aeroportuali, discariche, combustibili fossili (art. 6 c. 4 lett. b)",
           "tipo": "dichiarativo"
         }
       ],
@@ -54,14 +75,17 @@
       "piattaforma": "Piattaforma Invitalia",
       "fonti": [
         {"url": "https://www.mimit.gov.it/it/incentivi/investimenti-sostenibili-4-0-2026", "tipo": "ufficiale", "titolo": "Scheda MIMIT"},
+        {"url": "https://www.mimit.gov.it/images/stories/normativa/dm_18_marzo_2026_signed-nf.pdf", "tipo": "ufficiale", "titolo": "DM 18/03/2026 – allegato 4 (attività ammissibili), art. 6 (programmi ammissibili), allegato 6 (ambiti esclusi)"},
         {"url": "https://www.incentivimpresa.it/bandi-fondo-perduto-attivi/", "tipo": "secondaria", "titolo": "Calendario Incentivimpresa, agg. 16/09/2026"}
       ],
       "ultimo_controllo": "2026-09-18",
-      "affidabilita_dati": "secondaria",
+      "affidabilita_dati": "ufficiale",
       "note": [
         "Conta il giorno di invio, non l'ora: le domande dello stesso giorno sono contemporanee; se le risorse non bastano si forma una graduatoria su solidità economico-finanziaria e sostenibilità ambientale",
         "Contributo in conto impianti fino al 35% + finanziamento agevolato fino al 40%",
-        "L'elenco dei settori manifatturieri ammessi/esclusi va verificato nel decreto 18/03/2026"
+        "Attività ammissibili (allegato 4 del DM 18/03/2026): tutta la sezione C manifatturiera, più i servizi alle imprese elencati nell'allegato: 37.00.0 (solo trattamento acque reflue industriali per il riutilizzo), 38.1 e 38.21 (solo rifiuti di origine industriale e commerciale), divisione 52, 56.22, 58.2, divisioni 61, 62, 63.1, 70, 71, 72, 73, 82.20, 82.92, 95.1, 96.10.1",
+        "Le esclusioni dell'art. 6 c. 4 sono in parte settoriali (siderurgia, carbone, navale, fibre sintetiche, trasporti, energia) e in parte di progetto (allegato 6): in ateco_esclusi sono codificate solo quelle mappabili su un codice ATECO, le altre restano verifiche dichiarative",
+        "Divisione 52 (magazzinaggio e supporto ai trasporti) è ammessa dall'allegato 4 pur essendo il settore trasporti escluso dal GBER: il perimetro dell'allegato 4 prevale"
       ],
       "tag": ["manifattura", "industria 4.0", "mezzogiorno", "investimenti"]
     },

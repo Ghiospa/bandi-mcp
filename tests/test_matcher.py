@@ -43,11 +43,28 @@ def test_officina_manifatturiera_passa_investimenti_sostenibili():
     assert e.stima_agevolazione_eur == 675_000
 
 
-def test_software_house_esclusa_da_investimenti_sostenibili_per_ateco():
+def test_servizi_allegato_4_ammessi_da_investimenti_sostenibili():
+    """La divisione 62 è nell'allegato 4 del DM 18/03/2026: non è un'esclusione per ATECO."""
     p = ProfiloAzienda(ateco="62.01", regione="Sicilia", addetti_ula=3, investimento={"importo_eur": 900_000, "categorie": ["digitale"]})
+    e = matcher.valuta(trova_bando("mimit-investimenti-sostenibili-40-2026"), p, OGGI)
+    assert not any(m.codice == "ATECO" for m in e.motivi_esclusione)
+    assert e.esito == "ammissibile_con_verifiche"
+
+
+def test_commercio_escluso_da_investimenti_sostenibili_per_ateco():
+    """Il commercio al dettaglio non è né manifattura né servizio alle imprese dell'allegato 4."""
+    p = ProfiloAzienda(ateco="47.11", regione="Sicilia", addetti_ula=3, investimento={"importo_eur": 900_000, "categorie": ["digitale"]})
     e = matcher.valuta(trova_bando("mimit-investimenti-sostenibili-40-2026"), p, OGGI)
     assert e.esito == "non_ammissibile"
     assert e.motivi_esclusione[0].codice == "ATECO"
+
+
+def test_siderurgia_esclusa_da_investimenti_sostenibili():
+    """La siderurgia è sezione C ma è esclusa dall'art. 13 del GBER (art. 6 c. 4 lett. a)."""
+    p = ProfiloAzienda(ateco="24.10", regione="Sicilia", addetti_ula=40, investimento={"importo_eur": 900_000, "categorie": ["macchinari"]})
+    e = matcher.valuta(trova_bando("mimit-investimenti-sostenibili-40-2026"), p, OGGI)
+    assert e.esito == "non_ammissibile"
+    assert any(m.codice == "ATECO_ESCLUSO" for m in e.motivi_esclusione)
 
 
 def test_regione_fuori_mezzogiorno_esclusa():
