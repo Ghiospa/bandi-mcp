@@ -20,6 +20,8 @@ Configurazione via ambiente (tutto opzionale, default adatti allo sviluppo local
     BANDI_BASE_URL       URL pubblico, per canonical e sitemap (default bandi.prodgai.com)
     BANDI_SITO           "0" per non servire le pagine HTML generate dal catalogo
     BANDI_SITO_DIR       dove generarle (default: cartella temporanea, rifatta a ogni avvio)
+    BANDI_STATELESS      "1" per non tenere sessioni fra una richiesta e l'altra (serverless)
+    BANDI_JSON_RESPONSE  "1" per rispondere JSON invece di SSE (serverless senza streaming)
 
 Avvio: `python -m bandi_mcp.server --http`, oppure
 `uvicorn --factory bandi_mcp.http_app:crea_app --host 0.0.0.0 --port $PORT`.
@@ -152,7 +154,14 @@ def _monta_sito(app: Starlette) -> None:
 
 
 def crea_app() -> Starlette:
-    app = server.streamable_http_app(transport_security=_sicurezza_trasporto())
+    # Su un host serverless ogni richiesta può cadere su un'istanza diversa: senza stato
+    # condiviso le sessioni MCP non reggono, e lo streaming SSE spesso non è supportato.
+    # I due interruttori esistono per quello, e restano spenti su un processo normale.
+    app = server.streamable_http_app(
+        transport_security=_sicurezza_trasporto(),
+        stateless_http=os.environ.get("BANDI_STATELESS", "0") == "1",
+        json_response=os.environ.get("BANDI_JSON_RESPONSE", "0") == "1",
+    )
     al_minuto = int(os.environ.get("BANDI_RATE_LIMIT", "60"))
     fidati = os.environ.get("BANDI_TRUST_PROXY", "1") != "0"
     app.add_middleware(LimiteRichieste, al_minuto=al_minuto, fidati_del_proxy=fidati)
