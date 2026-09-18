@@ -9,3 +9,4 @@ sito/
 key.pem
 mcp-registry-auth
 data/uso.sqlite3
+.vercel

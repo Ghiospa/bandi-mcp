@@ -12,8 +12,11 @@ Configurazione via ambiente (tutto opzionale, default adatti allo sviluppo local
 
     PORT                 porta di ascolto (default 8000; le piattaforme la impongono)
     BANDI_HOST           indirizzo di bind (default 127.0.0.1; in container 0.0.0.0)
-    BANDI_ALLOWED_HOSTS  host ammessi, separati da virgola, es. "bandi.prodgai.com"
-                         se vuoto la protezione DNS rebinding resta disattivata
+    BANDI_ALLOWED_HOSTS  host ammessi, separati da virgola, es. "bandi.prodgai.com".
+                         ATTENZIONE: se vuoto, la libreria mcp NON disattiva la protezione —
+                         quando il bind è su localhost applica un allowlist di soli 127.0.0.1
+                         e localhost, e ogni richiesta con un altro Host riceve 421.
+                         Su un dominio pubblico questa variabile è obbligatoria
     BANDI_RATE_LIMIT     richieste al minuto per IP (default 60, 0 disattiva)
     BANDI_TRUST_PROXY    "0" per NON fidarsi di X-Forwarded-For (default: fidarsi)
     BANDI_LOG_DB         percorso SQLite del log d'uso (vedi uso.py)
@@ -29,6 +32,7 @@ Avvio: `python -m bandi_mcp.server --http`, oppure
 
 from __future__ import annotations
 
+import logging
 import os
 import tempfile
 import time

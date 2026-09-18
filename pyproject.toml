@@ -11,6 +11,10 @@ dev = ["pytest>=8.0"]
 [project.scripts]
 bandi-mcp = "bandi_mcp.server:main"
 
+# Deploy serverless: Vercel carica l'app ASGI da qui (vedi asgi.py e DEPLOY.md).
+[tool.vercel]
+entrypoint = "asgi:app"
+
 [build-system]
 requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"

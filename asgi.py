@@ -1,5 +1,5 @@
 """
-Punto d'ingresso per il deploy serverless su Vercel.
+Punto d'ingresso ASGI per il deploy serverless su Vercel.
 
 Vercel esegue ogni richiesta in una lambda che può essere nuova: niente sessioni MCP
 condivise, niente streaming SSE, filesystem effimero. I default qui sotto adattano
@@ -25,10 +25,16 @@ os.environ.setdefault("BANDI_LOG_DB", "")
 # protezione parziale contro un singolo client in loop, non contro un attacco.
 os.environ.setdefault("BANDI_RATE_LIMIT", "60")
 
-if not os.environ.get("BANDI_BASE_URL"):
-    dominio = os.environ.get("VERCEL_PROJECT_PRODUCTION_URL") or os.environ.get("VERCEL_URL")
-    if dominio:
-        os.environ["BANDI_BASE_URL"] = f"https://{dominio}"
+_domini = [d for d in (os.environ.get("VERCEL_PROJECT_PRODUCTION_URL"), os.environ.get("VERCEL_URL")) if d]
+
+if not os.environ.get("BANDI_BASE_URL") and _domini:
+    os.environ["BANDI_BASE_URL"] = f"https://{_domini[0]}"
+
+# Obbligatorio: la libreria mcp, vedendo un bind locale, applicherebbe da sola un allowlist
+# di soli 127.0.0.1 e localhost, e ogni richiesta al dominio pubblico tornerebbe 421.
+# I domini di preview cambiano a ogni deploy, per questo si leggono dall'ambiente.
+if not os.environ.get("BANDI_ALLOWED_HOSTS") and _domini:
+    os.environ["BANDI_ALLOWED_HOSTS"] = ",".join(dict.fromkeys(_domini))
 
 from bandi_mcp.http_app import crea_app  # noqa: E402
 

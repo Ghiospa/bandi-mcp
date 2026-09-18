@@ -16,6 +16,9 @@ Il fossato è il database.
 
 ## Stato al 18/09/2026
 
+**Online**: https://bandi-mcp.vercel.app — endpoint MCP su `/mcp`, catalogo sfogliabile su `/`.
+Repo pubblico: https://github.com/Ghiospa/bandi-mcp
+
 Funziona e testato:
 
 - Schema Pydantic v2 con dimensione UE, sezione ATECO e impresa nuova/da costituire calcolate
@@ -97,8 +100,10 @@ Ancora aperti:
 - [ ] **Tool `profilo_da_testo(testo)`**: euristiche (regex) che estraggono P.IVA, ATECO, forma giuridica,
       data costituzione, addetti da una visura incollata come testo. Niente LLM: l'agente ha già letto la
       visura, qui serve solo la normalizzazione. Criterio: test con 3 visure sintetiche.
-- [ ] **Deploy vero su bandi.prodgai.com**: richiede account e DNS, vedi `DEPLOY.md`. Il Dockerfile non è
-      mai stato costruito (Docker non disponibile sulla macchina di sviluppo).
+- [x] **Deploy** — fatto il 18/09/2026 su Vercel (serverless), verificato in produzione: initialize,
+      tools/list, cerca_bandi e la gestione degli errori rispondono. Manca il dominio
+      `bandi.prodgai.com` (CNAME da pannello) e resta aperta la migrazione a Railway quando il
+      cold start darà fastidio. Il Dockerfile non è mai stato costruito: Docker non era disponibile.
 
 ### P1 — copertura dati
 
@@ -119,8 +124,9 @@ Il catalogo è il fossato: 26 schede sono un inizio, non un prodotto.
 
 ### P2 — prodotto e distribuzione
 
-- [x] `--http` per l'uso senza installazione — fatto, ma **aperto senza autenticazione** per scelta:
-      ogni attrito taglia l'adozione, e il rate limit per IP basta finché l'istanza è una
+- [x] `--http` per l'uso senza installazione — fatto e **online**, aperto senza autenticazione per
+      scelta: ogni attrito taglia l'adozione. Su Vercel il rate limit vale per istanza, non
+      globalmente: è una protezione parziale, da rifare davanti se il traffico cresce
 - [ ] Pubblicazione nel registry MCP ufficiale (`server.json` è pronto, namespace `com.prodgai/bandi`,
       serve l'autenticazione DNS sul dominio apex) e nelle directory PulseMCP, Glama, Smithery, mcp.so.
       **Da fare per ultimo**: le schede vengono messe in cache e la prima impressione si brucia una volta

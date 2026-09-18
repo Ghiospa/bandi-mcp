@@ -7,8 +7,15 @@ dell'azienda e da cui riceve risposte strutturate, con i motivi.
 Catalogo: 26 misure — nazionali aperte alle PMI di tutta Italia più le regionali siciliane —
 verificate al 18/09/2026, ognuna con fonti, data dell'ultimo controllo e affidabilità del dato.
 
-**Endpoint pubblico** (quando è online): `https://bandi.prodgai.com/mcp`, streamable HTTP,
-nessuna autenticazione. Vedi [DEPLOY.md](DEPLOY.md) per metterlo online e farsi trovare.
+**È online**: `https://bandi-mcp.vercel.app/mcp` — streamable HTTP, nessuna autenticazione,
+nessuna registrazione. Collegalo con:
+
+```bash
+claude mcp add --transport http bandi https://bandi-mcp.vercel.app/mcp
+```
+
+Catalogo sfogliabile su https://bandi-mcp.vercel.app. Vedi [DEPLOY.md](DEPLOY.md) per il
+dominio definitivo e per la pubblicazione nel registry MCP.
 
 ```
 consulente → il suo Claude → cerca_bandi(profilo) → [bandi ordinati per fit, motivi, scadenze, stima]
