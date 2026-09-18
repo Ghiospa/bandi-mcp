@@ -1,0 +1,17 @@
+{
+  "name": "bandi-mcp-monitoraggio",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Check sintetici Checkly per bandi-mcp",
+  "scripts": {
+    "test": "checkly test",
+    "deploy": "checkly deploy"
+  },
+  "dependencies": {
+    "checkly": "^9.5.0",
+    "typescript": "^6.0.3"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.1"
+  }
+}

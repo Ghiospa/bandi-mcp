@@ -1,0 +1,35 @@
+# La freschezza del catalogo è l'unica cosa che ci distingue da un portale: ogni
+# pagina pubblica dichiara `ultimo_controllo`, quindi una data vecchia è una
+# promessa rotta. Questo job la controlla ogni lunedì mattina.
+#
+# Il ping finale a Checkly serve al caso peggiore: un job che smette di partire
+# non fallisce, sparisce. Il heartbeat monitor suona se non lo chiama nessuno
+# entro otto giorni. Il segreto CHECKLY_HEARTBEAT_URL si prende dal monitor
+# "CI: verifica delle fonti del catalogo" dopo il primo `checkly deploy`.
+name: verifica fonti
+
+on:
+  schedule:
+    - cron: "0 6 * * 1"
+  workflow_dispatch:
+
+jobs:
+  verifica:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - name: Test del motore
+        run: python -m pytest -q
+      - name: Fonti raggiungibili e schede non scadute
+        run: python scripts/verifica_fonti.py --giorni 45
+      - name: Ping del heartbeat Checkly
+        # Solo se tutto sopra è passato: un heartbeat che suona quando il job
+        # fallisce sarebbe peggio di nessun heartbeat.
+        if: success() && env.CHECKLY_HEARTBEAT_URL != ''
+        env:
+          CHECKLY_HEARTBEAT_URL: ${{ secrets.CHECKLY_HEARTBEAT_URL }}
+        run: curl -fsS --retry 3 "$CHECKLY_HEARTBEAT_URL"

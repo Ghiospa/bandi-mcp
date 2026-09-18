@@ -10,3 +10,5 @@ key.pem
 mcp-registry-auth
 data/uso.sqlite3
 .vercel
+node_modules/
+.checkly/
