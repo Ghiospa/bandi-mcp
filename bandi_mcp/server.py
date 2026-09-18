@@ -24,6 +24,7 @@ except ImportError:  # mcp 1.x
 from . import matcher
 from .schema import Bando, EsitoAmmissibilita, ProfiloAzienda
 from .store import carica_catalogo, ricarica, trova_bando
+from .uso import middleware_uso
 
 ISTRUZIONI = """\
 Bandi MCP: finanza agevolata per imprese siciliane, pensata per essere usata da un agente.
@@ -41,12 +42,16 @@ Ogni scheda ha fonti e data dell'ultimo controllo: prima di una domanda vera, ri
 testo ufficiale dell'avviso. Le stime economiche sono lorde: i contributi a fondo perduto sono tassati.
 """
 
-server = _Server(
-    name="bandi-mcp",
-    title="Bandi MCP — finanza agevolata agent-first (Sicilia)",
-    instructions=ISTRUZIONI,
-    version="0.1.0",
-)
+_opzioni: dict[str, Any] = {
+    "name": "bandi-mcp",
+    "title": "Bandi MCP — finanza agevolata agent-first (Sicilia)",
+    "instructions": ISTRUZIONI,
+    "version": "0.1.0",
+}
+try:  # mcp >= 2.0: log anonimo delle chiamate come middleware del server
+    server = _Server(**_opzioni, middleware=[middleware_uso])
+except TypeError:  # mcp 1.x non ha i middleware: si resta senza log
+    server = _Server(**_opzioni)
 
 
 def _profilo(p: dict[str, Any] | ProfiloAzienda) -> ProfiloAzienda:
@@ -436,7 +441,9 @@ def risorsa_catalogo() -> str:
 
 def main() -> None:
     if "--http" in sys.argv:
-        server.run(transport="streamable-http")
+        from .http_app import avvia
+
+        avvia()
     else:
         server.run(transport="stdio")
 

@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: bandi-mcp
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /health
+    plan: starter
+    envVars:
+      - key: BANDI_HOST
+        value: 0.0.0.0
+      - key: BANDI_ALLOWED_HOSTS
+        value: bandi.prodgai.com
+      - key: BANDI_RATE_LIMIT
+        value: "60"
+      - key: BANDI_LOG_DB
+        value: /dati/uso.sqlite3
+    disk:
+      name: dati
+      mountPath: /dati
+      sizeGB: 1
