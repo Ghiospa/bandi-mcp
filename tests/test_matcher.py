@@ -92,3 +92,14 @@ def test_bando_chiuso_dopo_la_scadenza():
     e = matcher.valuta(trova_bando("mintur-green-tour-2026"), p, date(2026, 10, 2))
     assert e.esito == "non_ammissibile"
     assert e.motivi_esclusione[0].codice == "STATO_CHIUSO"
+
+
+def test_zes_unica_finestra_2026_chiusa():
+    """La comunicazione preventiva chiudeva il 30/05/2026: oggi il credito 2026 non è più accessibile."""
+    p = ProfiloAzienda(
+        ateco="25.62", regione="Sicilia", addetti_ula=14, fatturato_ultimo_eur=2_100_000,
+        investimento={"importo_eur": 900_000, "categorie": ["macchinari", "impianti"]},
+    )
+    e = matcher.valuta(trova_bando("zes-unica-credito-imposta-2026"), p, OGGI)
+    assert e.esito == "non_ammissibile"
+    assert e.motivi_esclusione[0].codice == "STATO_CHIUSO"

@@ -572,25 +572,32 @@
       "gestore": "Agenzia delle Entrate",
       "livello": "nazionale",
       "territori": ["Abruzzo", "Basilicata", "Calabria", "Campania", "Molise", "Puglia", "Sardegna", "Sicilia"],
-      "stato": "aperto",
+      "stato": "chiuso",
       "procedura": "automatica",
       "agevolazioni": ["credito_imposta"],
-      "intensita_max_pct": null,
+      "intensita_max_pct": 60,
       "intensita_fondo_perduto_pct": null,
+      "spesa_min_eur": 200000,
+      "spesa_max_eur": 100000000,
       "dimensioni_ammesse": ["micro", "piccola", "media", "grande"],
       "beneficiari": ["impresa"],
       "ateco_ammessi": null,
       "categorie_spesa": ["macchinari", "impianti"],
       "calendario": {
-        "chiusura": "2026-12-31",
-        "orario_chiusura": "termine per la realizzazione degli investimenti",
+        "chiusura": "2026-05-30",
+        "orario_chiusura": "termine di invio della comunicazione preventiva all'Agenzia delle Entrate (finestra 31/03/2026 - 30/05/2026)",
         "ammissibilita_spese_da": "comunicazione_preventiva",
         "termine_realizzazione": "31/12/2026"
       },
       "requisiti": [
         {
-          "codice": "COMUNICAZIONE_ADE",
-          "descrizione": "Comunicazione preventiva e integrativa all'Agenzia delle Entrate nelle finestre stabilite dal provvedimento 2026: verificare le date",
+          "codice": "COMUNICAZIONE_ADE_PREVENTIVA",
+          "descrizione": "La comunicazione preventiva all'Agenzia delle Entrate andava trasmessa tra il 31/03/2026 e il 30/05/2026: senza quella comunicazione non si accede al credito sugli investimenti 2026",
+          "tipo": "dichiarativo"
+        },
+        {
+          "codice": "COMUNICAZIONE_ADE_INTEGRATIVA",
+          "descrizione": "Chi ha già inviato la comunicazione preventiva deve trasmettere la comunicazione integrativa dal 03/01/2027 al 17/01/2027 attestando gli investimenti realizzati: l'importo non può superare quello indicato nella comunicazione originaria",
           "tipo": "dichiarativo"
         },
         {
@@ -601,16 +608,21 @@
       ],
       "regime_aiuti": "gber",
       "riserve": [],
-      "documenti": ["Comunicazione AdE", "Certificazione revisore sulle spese", "Fatture con dicitura ZES"],
+      "documenti": ["Comunicazione AdE", "Comunicazione integrativa AdE", "Certificazione revisore sulle spese", "Fatture con dicitura ZES"],
       "piattaforma": "Agenzia delle Entrate",
       "fonti": [
-        {"url": "https://www.incentivimpresa.it/zes-unica/", "tipo": "secondaria", "titolo": "Guida Incentivimpresa"},
-        {"url": "https://incentivisicilia.it/", "tipo": "secondaria", "titolo": "Incentivi Sicilia"}
+        {"url": "https://www.agenziaentrate.gov.it/portale/credito-d-imposta-per-investimenti-nella-zes-unica-zes-2026-/come-e-quando-imprese", "tipo": "ufficiale", "titolo": "Agenzia delle Entrate – ZES 2026, come e quando"},
+        {"url": "https://www.agenziaentrate.gov.it/portale/-/provvedimento-del-30-gennaio-2026-2", "tipo": "ufficiale", "titolo": "Provvedimento AdE 30/01/2026 prot. 3882/2026"},
+        {"url": "https://biblus.acca.it/credito-di-imposta-zes-unica/", "tipo": "secondaria", "titolo": "BibLus – aliquote per regione e dimensione"}
       ],
       "ultimo_controllo": "2026-09-18",
-      "affidabilita_dati": "da_verificare",
+      "affidabilita_dati": "secondaria",
       "note": [
-        "Scheda incompleta: percentuali (dipendono da regione e dimensione), soglie e finestre di comunicazione 2026 vanno lette sul provvedimento AdE",
+        "Finestra 2026 CHIUSA: la comunicazione preventiva si inviava dal 31/03/2026 al 30/05/2026 (fonte ufficiale AdE). Oggi non è più possibile accedere al credito per gli investimenti 2026",
+        "Resta aperta solo la comunicazione integrativa dal 03/01/2027 al 17/01/2027, riservata a chi ha già trasmesso la comunicazione preventiva",
+        "Aliquote Sicilia (carta degli aiuti a finalità regionale 2022-2027, per progetti fino a 50 M€): 40% grandi imprese, 50% medie, 60% piccole e micro. Il motore usa 60% come massimo: per medie e grandi la stima va ridotta",
+        "Investimento minimo agevolabile 200.000 €, massimo 100 M€ per progetto",
+        "Un'eventuale riapertura per il 2027 dipende dalla legge di bilancio: ricontrollare a gennaio 2027",
         "Cumulabile con Nuova Sabatini entro i limiti di intensità"
       ],
       "tag": ["credito imposta", "ZES", "mezzogiorno", "investimenti"]
