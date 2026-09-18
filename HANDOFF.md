@@ -18,22 +18,28 @@ Il fossato è il database.
 
 Funziona e testato:
 
-- Schema Pydantic v2 (`ProfiloAzienda`, `Bando`, `EsitoAmmissibilita`) con dimensione UE e sezione ATECO calcolate
+- Schema Pydantic v2 (`ProfiloAzienda`, `Bando`, `EsitoAmmissibilita`) con dimensione UE, sezione ATECO
+  e impresa nuova/da costituire calcolate
 - Motore deterministico: territorio, dimensione, beneficiario, ATECO ammessi/esclusi, soglie di spesa,
   coerenza categorie, de minimis, requisiti strutturati (automatici/dichiarativi), scadenza rilevante
   oggi, fit 0-100 spiegato, stima lorda, penalità per requisiti bloccanti non verificabili
 - 9 tool MCP + 1 resource, verificati con un client `mcp` reale su stdio (tools/list, call_tool,
   errori come `ToolError`, resource read)
-- Catalogo: 16 bandi reali con fonti (vedi `data/bandi_sicilia.json`)
-- 11 test verdi; demo su tre profili (officina meccanica RG, startup AI CT, hotel ME)
+- Catalogo: 16 bandi reali con fonti (vedi `data/bandi_sicilia.json`). Affidabilità: 4 ufficiali,
+  11 secondarie, 1 da verificare (Brevetti+, in attesa dell'avviso attuativo)
+- 19 test verdi; demo su tre profili (officina meccanica RG, startup AI CT, hotel ME)
 
 Ranking della demo (sanity check dopo ogni modifica al motore):
 
 - Officina 25.62, 14 ULA, 900k macchinari+digitale → Investimenti Sostenibili 4.0 (96), Nuova Sabatini (84),
-  Voucher Cloud (75), ZES (65), Resto al Sud (65, manca `eta_titolare`)
+  Voucher Cloud (75), Cultura Cresce (61), Conciliazione (50)
 - Startup 62.01, 3 ULA, 2024, innovativa, titolare 29 → Smart&Start (86), Voucher Cloud (85),
-  Resto al Sud (80), Sabatini (74), ON (73)
-- Hotel 55.10, 22 ULA, 1.8M energia → Conto Termico (89), Green Tour (65, chiude tra 12 gg), Conciliazione (50)
+  Sabatini (74), ON (73), Cultura Cresce (51)
+- Hotel 55.10, 22 ULA, 1.8M energia → Conto Termico (89, senza stima: dipende dai massimali),
+  Green Tour (65, chiude tra 12 gg), Conciliazione (50), EUIPO SME Fund (42), Sviluppo Competenze (40)
+
+Rispetto al ranking di partenza sono usciti ZES Unica (finestra 2026 chiusa il 30/05) e Resto al Sud 2.0
+(riservato a imprese nuove o da costituire): entrambe le uscite sono corrette e spiegate nei commit.
 
 ## Decisioni prese (e perché)
 
@@ -50,26 +56,41 @@ Ranking della demo (sanity check dopo ogni modifica al motore):
 
 ## Problemi noti
 
-1. **ZES Unica 2026**: percentuali per regione/dimensione e finestre di comunicazione AdE non verificate
-   → `affidabilita_dati: "da_verificare"`, intensità `null`. Da completare da provvedimento AdE.
-2. **Brevetti+ 2026**: "in apertura entro settembre", nessuna data pubblicata al 18/09. Ricontrollare.
-3. **Investimenti Sostenibili 4.0**: `ateco_ammessi: ["C"]` è un'approssimazione; il decreto 18/03/2026
-   ha un elenco di settori manifatturieri ammessi/esclusi da trascrivere.
-4. **Conto Termico**: la stima 65% × spesa ignora i massimali per tipologia di intervento → sovrastima.
-   Serve una struttura `massimali_per_intervento` o un cap ragionevole.
-5. **Resto al Sud 2.0**: manca un requisito sull'impresa nuova/da costituire; oggi un'azienda del 2015
-   con titolare 30enne risulterebbe compatibile. Verificare l'avviso e aggiungere il requisito.
+Chiusi il 18/09/2026 (un commit per problema, vedi `git log`):
+
+1. ~~ZES Unica 2026~~ → finestra di comunicazione preventiva 31/03-30/05/2026 chiusa (fonte AdE),
+   integrativa 03/01-17/01/2027 solo per chi ha già comunicato. Scheda a `stato: "chiuso"`, aliquote
+   Sicilia 40/50/60%, soglie 200k-100M. Una riapertura 2027 dipende dalla legge di bilancio.
+2. ~~Brevetti+ 2026~~ → decreto direttoriale MIMIT 28/07/2026 (GU 200 del 29/08/2026), 20 M€.
+   Gli avvisi attuativi DGIAI non risultano pubblicati: la scheda resta `da_verificare` per scelta,
+   non per mancanza di ricerca. **Da ricontrollare: è l'unica scheda ancora da verificare.**
+3. ~~Investimenti Sostenibili 4.0~~ → allegato 4 del DM 18/03/2026 trascritto dal decreto: sezione C
+   più 17 codici di servizi alle imprese. Esclusioni settoriali in `ateco_esclusi`, esclusioni di
+   progetto (allegato 6, tetto del 70% del fatturato, finalità del programma) come dichiarativi.
+4. ~~Conto Termico~~ → nuovo campo `base_calcolo: "massimali_specifici"`: il motore non stima più
+   il 65% del totale (erano 1,17 M€ sull'hotel) e rimanda alle tabelle €/kW e €/m².
+5. ~~Resto al Sud 2.0~~ → requisito `IMPRESA_NUOVA` su un nuovo computed field
+   `impresa_nuova_o_da_costituire`, più i dichiarativi su inattività, condizione soggettiva del
+   richiedente e sede operativa.
+
+Ancora aperti:
+
 6. `dimensione` con soli addetti è ottimista (assume sotto soglia di fatturato): segnalato come avvertenza,
    ma va reso esplicito nello schema.
 7. Nessuna regione oltre la Sicilia nel catalogo; `store.py` supporta già più file.
-8. Il resource `bandi://catalogo/sicilia` restituisce ~48 KB: valutare paginazione o solo elenco.
+8. Il resource `bandi://catalogo/sicilia` restituisce ~50 KB: valutare paginazione o solo elenco.
+9. `eta_impresa_mesi` e `impresa_nuova_o_da_costituire` usano `date.today()`, non il parametro `oggi`
+   di `valuta()`: i test che simulano una data diversa da oggi non li vedono cambiare.
+10. Le aliquote ZES per dimensione (40/50/60%) stanno in una nota: il motore usa il massimo (60%) per
+    tutti. Se servisse precisione, serve un campo `intensita_per_dimensione`.
 
 ## Backlog in ordine di priorità
 
 ### P0 — prima di darlo ai tre commercialisti
 
-- [ ] **Chiudere i problemi noti 1-5** (dati). Criterio: nessun bando con `da_verificare` tra i primi 5
-      per i tre profili demo; test che copra il requisito "impresa nuova" di Resto al Sud.
+- [x] **Chiudere i problemi noti 1-5** (dati) — fatto il 18/09/2026. Criterio rispettato: nessun bando
+      con `da_verificare` tra i primi 5 per i tre profili demo, e tre test nuovi sul requisito
+      "impresa nuova" di Resto al Sud (esclusione, impresa da costituire, computed field).
 - [ ] **`.mcp.json` nel repo + istruzioni di 5 righe** per collegarlo a Claude Desktop e Claude Code.
       Criterio: un commercialista non tecnico ci arriva da solo con il README.
 - [ ] **Tool `profilo_da_testo(testo)`**: euristiche (regex) che estraggono P.IVA, ATECO, forma giuridica,

@@ -21,7 +21,9 @@ Un portale mostra un elenco e una scheda PDF. Questo restituisce:
 - **campi mancanti**: cosa chiedere, e per quanti bandi conta (`dati_che_migliorerebbero_la_ricerca`)
 - **la data che conta oggi**, non un elenco di date: "18 giorni di preparazione prima dell'invio del 6/10" è diverso da "chiude il 21/12"
 - **requisiti divisi in automatici e dichiarativi**: quelli che possiamo verificare sul profilo e quelli che il consulente deve confermare
-- **stima lorda dell'agevolazione** e avvertenze fiscali (il fondo perduto è tassato)
+- **stima lorda dell'agevolazione** e avvertenze fiscali (il fondo perduto è tassato). La stima manca
+  quando l'importo non si ricava dal totale di spesa ma da massimali per unità (€/kW, €/m²), come nel
+  Conto Termico: in quel caso il motore lo dice invece di inventare una cifra
 
 Il vero asset è il **database normalizzato**: `data/bandi_sicilia.json`. Oggi questi dati sono sparsi
 su venti portali in PDF. Chi li pulisce per primo ha un fossato.
@@ -32,7 +34,7 @@ su venti portali in PDF. Chi li pulisce per primo ha un fossato.
 git clone <repo> && cd bandi-mcp
 pip install -r requirements.txt
 python scripts/demo.py          # tre profili tipo, senza MCP
-python -m pytest -q             # 11 test
+python -m pytest -q             # 19 test
 python -m bandi_mcp.server      # server MCP su stdio
 python -m bandi_mcp.server --http   # streamable HTTP su :8000 per client remoti
 ```
@@ -103,7 +105,7 @@ bandi_mcp/
 data/
   bandi_sicilia.json   16 bandi normalizzati con fonti
 scripts/demo.py        tre profili tipo (officina, startup AI, hotel)
-tests/                 11 test sul motore e sul catalogo
+tests/                 19 test sul motore e sul catalogo
 examples/              config Claude Desktop, profilo di esempio
 ```
 
@@ -118,6 +120,9 @@ Campi che fanno la differenza:
 - `territori`: regioni ammesse, `["IT"]` per tutta Italia
 - `dimensioni_ammesse`, `ateco_ammessi` (prefissi: sezione `"C"` o divisione `"55"`), `ateco_esclusi`
 - `spesa_min_eur` / `spesa_max_eur` / `contributo_max_eur` / `intensita_max_pct` / `intensita_fondo_perduto_pct`
+- `base_calcolo`: `"spesa_ammissibile"` (default: intensità × spesa) oppure `"massimali_specifici"` quando
+  l'importo dipende da massimali per unità (€/kW, €/m²) e tetti per intervento. Con `"massimali_specifici"`
+  il motore non restituisce una stima e aggiunge una verifica manuale: meglio nessuna cifra di una sbagliata
 - `categorie_spesa`: da `CategoriaSpesa` in `schema.py`
 - `calendario`: `apertura_compilazione`, `apertura_invio`, `chiusura`, `ammissibilita_spese_da`
 - `requisiti`: automatici (`campo_profilo` + `operatore` + `valore`) o `dichiarativi`
