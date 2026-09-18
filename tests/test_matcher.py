@@ -120,3 +120,28 @@ def test_zes_unica_finestra_2026_chiusa():
     e = matcher.valuta(trova_bando("zes-unica-credito-imposta-2026"), p, OGGI)
     assert e.esito == "non_ammissibile"
     assert e.motivi_esclusione[0].codice == "STATO_CHIUSO"
+
+
+def test_conto_termico_non_stima_una_percentuale_della_spesa():
+    """L'incentivo dipende dai massimali di spesa specifica (€/kW, €/m²), non dal 65% del totale:
+    il motore non deve restituire un numero che non sa difendere."""
+    p = ProfiloAzienda(
+        ateco="55.10", regione="Sicilia", addetti_ula=22,
+        investimento={"importo_eur": 1_800_000, "categorie": ["efficienza_energetica"]},
+    )
+    b = trova_bando("gse-conto-termico-3-0")
+    assert b.base_calcolo == "massimali_specifici"
+    e = matcher.valuta(b, p, OGGI)
+    assert e.stima_agevolazione_eur is None
+    assert any("massimali" in v for v in e.verifiche_manuali)
+    assert "€" not in e.sintesi
+
+
+def test_stima_resta_percentuale_della_spesa_dove_ha_senso():
+    p = ProfiloAzienda(
+        ateco="25.62", regione="Sicilia", addetti_ula=14, fatturato_ultimo_eur=2_100_000,
+        investimento={"importo_eur": 900_000, "categorie": ["macchinari", "digitale"]},
+    )
+    b = trova_bando("mimit-investimenti-sostenibili-40-2026")
+    assert b.base_calcolo == "spesa_ammissibile"
+    assert matcher.valuta(b, p, OGGI).stima_agevolazione_eur == 675_000

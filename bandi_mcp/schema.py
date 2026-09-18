@@ -234,6 +234,12 @@ class Bando(BaseModel):
     spesa_min_eur: Optional[float] = None
     spesa_max_eur: Optional[float] = None
     dotazione_eur: Optional[float] = None
+    base_calcolo: Literal["spesa_ammissibile", "massimali_specifici"] = Field(
+        "spesa_ammissibile",
+        description="Come si determina l'agevolazione. 'spesa_ammissibile': intensità × spesa. "
+        "'massimali_specifici': l'importo dipende da massimali per unità (€/kW, €/m²) e da tetti per "
+        "tipologia di intervento, quindi il motore non stima una cifra dal totale di spesa.",
+    )
 
     dimensioni_ammesse: list[Dimensione] = Field(default_factory=lambda: ["micro", "piccola", "media"])
     beneficiari: list[

@@ -871,6 +871,7 @@
       "intensita_max_pct": 65,
       "intensita_fondo_perduto_pct": 65,
       "dotazione_eur": 900000000,
+      "base_calcolo": "massimali_specifici",
       "dimensioni_ammesse": ["micro", "piccola", "media", "grande"],
       "beneficiari": ["impresa", "ets"],
       "ateco_ammessi": null,
@@ -891,11 +892,19 @@
       "piattaforma": "Portaltermico GSE",
       "fonti": [
         {"url": "https://www.gse.it/servizi-per-te/efficienza-energetica/conto-termico-3-0", "tipo": "ufficiale", "titolo": "Scheda GSE"},
+        {"url": "https://www.gse.it/servizi-per-te/efficienza-energetica/conto-termico-3-0/percentuali-ed-erogazione-degli-incentivi", "tipo": "ufficiale", "titolo": "GSE – percentuali, massimali ed erogazione degli incentivi"},
         {"url": "https://www.incentivimpresa.it/bandi-fondo-perduto-attivi/", "tipo": "secondaria", "titolo": "Calendario Incentivimpresa, agg. 16/09/2026"}
       ],
       "ultimo_controllo": "2026-09-18",
-      "affidabilita_dati": "secondaria",
-      "note": ["Massimali variabili per tipologia (pompe di calore, solare termico, caldaie a biomassa)", "Possibile passare da una ESCo per interventi complessi"],
+      "affidabilita_dati": "ufficiale",
+      "note": [
+        "Il 65% è un tetto, non la regola: l'incentivo si calcola sui massimali di spesa specifica per intervento, quindi su un programma grande la percentuale effettiva scende molto",
+        "Titolo III (rinnovabili termiche): pompe di calore e solare termico 65% dei massimali calcolati, scaldacqua a pompa di calore 40% (max 500-1.500 €), allaccio a teleriscaldamento 65% (130-200 €/kW, tetto 6.500-30.000 €)",
+        "Titolo II (efficienza): isolamento 40% (150-350 €/m², tetto 1 M€), serramenti 40% (700-800 €/m², tetto 500.000 €), schermature 40% (50-250 €/m², tetto 10.000-90.000 €), NZEB 65% (1.000-1.300 €/m², tetto 2,5-3 M€), illuminazione 40%, building automation 40% (60 €/m², tetto 100.000 €), fotovoltaico 20%",
+        "Bonus +10% se i componenti sono di produzione UE",
+        "Incentivo fino a 15.000 € erogato in unica soluzione; oltre, in rate annuali (2 anni per pompe di calore fino a 35 kW e solare termico fino a 50 m², 5 anni negli altri casi)",
+        "Possibile passare da una ESCo per interventi complessi"
+      ],
       "tag": ["energia", "efficienza", "rinnovabili", "sempre aperto"]
     }
   ]

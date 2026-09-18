@@ -324,6 +324,14 @@ def valuta(bando: Bando, profilo: ProfiloAzienda, oggi: Optional[date] = None) -
             punteggio -= 10
             fattori.append("-10 rischio spese anticipate non ammissibili")
 
+    # --- base di calcolo dell'agevolazione -------------------------------- #
+    if bando.base_calcolo == "massimali_specifici":
+        verifiche.append(
+            "L'incentivo non è una percentuale della spesa totale: dipende dai massimali di spesa "
+            "specifica per tipologia di intervento (€/kW, €/m²) e dai tetti per intervento. "
+            "Calcolarlo sulle tabelle dell'avviso, intervento per intervento"
+        )
+
     # --- affidabilità dei dati ------------------------------------------- #
     if bando.affidabilita_dati == "da_verificare":
         verifiche.append("Scheda bando con dati parziali: verificare sul testo dell'avviso prima di procedere")
@@ -397,6 +405,10 @@ def _valuta_requisito(
 
 def _stima_agevolazione(bando: Bando, importo: Optional[float]) -> Optional[float]:
     """Stima lorda del beneficio: intensità × spesa, tagliata al massimale. Prima delle imposte."""
+    if bando.base_calcolo == "massimali_specifici":
+        # L'incentivo si calcola sui massimali per unità del bando (€/kW, €/m², tetti per
+        # intervento): dal totale di spesa non si ricava una cifra difendibile, meglio nessuna.
+        return None
     if importo is None or bando.intensita_max_pct is None:
         return bando.contributo_max_eur
     base = min(importo, bando.spesa_max_eur) if bando.spesa_max_eur else importo
