@@ -662,12 +662,15 @@
       "documenti": ["Attestato di concessione o domanda di brevetto", "Piano di valorizzazione", "Preventivi dei fornitori di servizi specialistici"],
       "piattaforma": "Piattaforma Invitalia",
       "fonti": [
+        {"url": "https://www.mimit.gov.it/it/notizie-stampa/mimit-32-milioni-per-valorizzare-la-proprieta-industriale-delle-pmi", "tipo": "ufficiale", "titolo": "MIMIT – 32 milioni per la proprietà industriale delle PMI (decreto direttoriale 28/07/2026)"},
         {"url": "https://bandi.contributiregione.it/regione/sicilia", "tipo": "secondaria", "titolo": "Contributi Regione – Sicilia"}
       ],
       "ultimo_controllo": "2026-09-18",
       "affidabilita_dati": "da_verificare",
       "note": [
-        "Apertura prevista entro settembre 2026, data non ancora pubblicata al 18/09",
+        "Il decreto direttoriale MIMIT del 28/07/2026 (GU n. 200 del 29/08/2026) ha programmato la riapertura 2026: 32 M€ complessivi, di cui 20 M€ a Brevetti+, 10 M€ a Disegni+, 2 M€ a Marchi+",
+        "Gli avvisi attuativi della DGIAI, che fisseranno requisiti definitivi e date di apertura dello sportello, erano attesi entro 30 giorni dal decreto: al 18/09/2026 non risultano ancora pubblicati",
+        "Finché l'avviso non esce, importi e percentuali di questa scheda sono quelli dell'edizione precedente: non usarli per una domanda",
         "Fino all'85% con certificazione di parità di genere, fino al 100% in contitolarità con ente di ricerca"
       ],
       "tag": ["brevetti", "proprietà intellettuale", "innovazione"]
