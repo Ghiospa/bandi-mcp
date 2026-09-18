@@ -1,0 +1,614 @@
+{
+  "territorio": "Italia",
+  "versione": "2026-09-18",
+  "nota": "Misure nazionali aperte alle PMI di tutta Italia, separate dal file regionale. Primo lotto: ogni scheda riporta fonti e data dell'ultimo controllo. I dati vanno riverificati sul testo dell'avviso prima di una domanda.",
+  "bandi": [
+    {
+      "id": "mimit-transizione-5-0-iperammortamento",
+      "titolo": "Nuovo Piano Transizione 5.0 – iperammortamento",
+      "ente": "MIMIT",
+      "gestore": "GSE",
+      "livello": "nazionale",
+      "territori": ["IT"],
+      "stato": "aperto",
+      "procedura": "cronologico",
+      "agevolazioni": ["maggiorazione_ammortamento"],
+      "intensita_max_pct": null,
+      "intensita_fondo_perduto_pct": null,
+      "spesa_max_eur": 20000000,
+      "base_calcolo": "maggiorazione_ammortamento",
+      "dimensioni_ammesse": ["micro", "piccola", "media", "grande"],
+      "beneficiari": ["impresa"],
+      "ateco_ammessi": null,
+      "categorie_spesa": ["macchinari", "impianti", "digitale", "efficienza_energetica", "rinnovabili"],
+      "calendario": {
+        "apertura_invio": "2026-06-12",
+        "chiusura": "2028-09-30",
+        "orario_chiusura": "prenotazione sulla piattaforma GSE, operativa dal 12/06/2026",
+        "ammissibilita_spese_da": "2026-01-01"
+      },
+      "requisiti": [
+        {
+          "codice": "CERTIFICAZIONE_TECNICA",
+          "descrizione": "Perizia tecnica asseverata che attesti i requisiti dei beni e il loro inserimento nella trasformazione digitale e tecnologica (allegati IV-V della legge 199/2025)",
+          "tipo": "dichiarativo"
+        },
+        {
+          "codice": "CERTIFICAZIONE_CONTABILE",
+          "descrizione": "Certificazione contabile delle spese effettivamente sostenute",
+          "tipo": "dichiarativo"
+        },
+        {
+          "codice": "AUTOPRODUZIONE_105",
+          "descrizione": "Se il programma comprende impianti di autoproduzione da fonti rinnovabili con accumulo, la capacità non può superare il 105% del fabbisogno energetico dell'anno precedente",
+          "tipo": "dichiarativo"
+        },
+        {
+          "codice": "REDDITO_CAPIENTE",
+          "descrizione": "Il beneficio è una deduzione: serve reddito imponibile capiente negli esercizi di ammortamento, altrimenti non si traduce in risparmio",
+          "tipo": "dichiarativo"
+        }
+      ],
+      "regime_aiuti": null,
+      "riserve": [],
+      "documenti": [
+        "Perizia tecnica asseverata",
+        "Certificazione contabile",
+        "Prenotazione sulla piattaforma GSE",
+        "Fatture con riferimento normativo"
+      ],
+      "piattaforma": "Piattaforma GSE",
+      "fonti": [
+        {"url": "https://www.mimit.gov.it/it/incentivi/nuovo-piano-transizione-5-0-iperammortamento", "tipo": "ufficiale", "titolo": "Scheda MIMIT – Nuovo Piano Transizione 5.0"}
+      ],
+      "ultimo_controllo": "2026-09-18",
+      "affidabilita_dati": "ufficiale",
+      "note": [
+        "Non è un contributo né un credito d'imposta: è una maggiorazione del costo di acquisizione ai soli fini fiscali, che aumenta ammortamenti e canoni deducibili",
+        "Maggiorazione per scaglioni di investimento: 180% fino a 2,5 M€, 100% da 2,5 a 10 M€, 50% da 10 a 20 M€",
+        "Il risparmio reale è la maggiorazione moltiplicata per l'aliquota d'imposta: su 100.000 € di beni nel primo scaglione la deduzione aggiuntiva è 180.000 €, il risparmio dipende da IRES/IRPEF e dalla capienza",
+        "Vale per beni acquistati dal 01/01/2026 al 30/09/2028",
+        "Riferimenti: legge 199/2025 (bilancio), decreto interministeriale 07/05/2026, decreto direttoriale 10/06/2026"
+      ],
+      "tag": ["transizione 5.0", "industria 4.0", "fiscale", "macchinari", "energia"]
+    },
+    {
+      "id": "mimit-credito-imposta-ricerca-sviluppo",
+      "titolo": "Credito d'imposta ricerca e sviluppo",
+      "ente": "MIMIT / Agenzia delle Entrate",
+      "gestore": "Agenzia delle Entrate",
+      "livello": "nazionale",
+      "territori": ["IT"],
+      "stato": "sportello_continuo",
+      "procedura": "automatica",
+      "agevolazioni": ["credito_imposta"],
+      "intensita_max_pct": 10,
+      "intensita_fondo_perduto_pct": null,
+      "contributo_max_eur": 5000000,
+      "dimensioni_ammesse": ["micro", "piccola", "media", "grande"],
+      "beneficiari": ["impresa"],
+      "ateco_ammessi": null,
+      "categorie_spesa": ["ricerca_sviluppo", "personale_ricerca", "consulenza", "proprieta_intellettuale"],
+      "calendario": {
+        "ammissibilita_spese_da": "presentazione_domanda"
+      },
+      "requisiti": [
+        {
+          "codice": "CERTIFICAZIONE_REVISORE",
+          "descrizione": "Certificazione delle spese da un revisore legale: per le imprese non obbligate alla revisione il costo è riconosciuto fino a 5.000 €",
+          "tipo": "dichiarativo"
+        },
+        {
+          "codice": "RELAZIONE_TECNICA",
+          "descrizione": "Relazione tecnica asseverata che descriva finalità, contenuti e risultati delle attività, da conservare in azienda",
+          "tipo": "dichiarativo"
+        },
+        {
+          "codice": "ATTIVITA_QUALIFICATA_RS",
+          "descrizione": "Le attività devono qualificarsi come ricerca e sviluppo secondo il Manuale di Frascati: novità, incertezza scientifica o tecnologica, sistematicità. Non basta l'innovazione di prodotto o l'adattamento di tecnologie esistenti",
+          "tipo": "dichiarativo"
+        },
+        {
+          "codice": "NON_IN_LIQUIDAZIONE",
+          "descrizione": "Esclusi i soggetti in liquidazione volontaria, fallimento o destinatari di sanzioni interdittive",
+          "tipo": "dichiarativo"
+        }
+      ],
+      "regime_aiuti": "fuori_regime",
+      "riserve": [],
+      "documenti": [
+        "Certificazione del revisore legale",
+        "Relazione tecnica asseverata",
+        "Prospetto analitico delle spese per progetto",
+        "Comunicazione al MIMIT dove prevista"
+      ],
+      "piattaforma": "Dichiarazione dei redditi (compensazione in F24)",
+      "fonti": [
+        {"url": "https://www.mimit.gov.it/it/incentivi/credito-d-imposta-r-s", "tipo": "ufficiale", "titolo": "Scheda MIMIT – Credito d'imposta ricerca e sviluppo"}
+      ],
+      "ultimo_controllo": "2026-09-18",
+      "affidabilita_dati": "ufficiale",
+      "note": [
+        "Aliquota 10% della base di calcolo, massimo 5 milioni di euro l'anno",
+        "Le maggiorazioni per innovazione tecnologica (5%, max 2 M€) e per innovazione 4.0 e green (5%, max 4 M€) riguardavano i periodi 2024-2025: per il 2026 verificare cosa resta in vigore",
+        "Il credito si usa in compensazione, non si incassa: serve capienza in F24",
+        "La qualificazione delle attività è il punto su cui si concentrano i controlli: la relazione tecnica non è un adempimento formale",
+        "Riferimenti: commi 198-209 della legge di bilancio 2020, decreto attuativo 26/05/2020 e decreti direttoriali successivi"
+      ],
+      "tag": ["ricerca", "sviluppo", "credito imposta", "innovazione"]
+    },
+    {
+      "id": "mimit-credito-imposta-design-2026",
+      "titolo": "Credito d'imposta design e ideazione estetica 2026",
+      "ente": "MIMIT / Agenzia delle Entrate",
+      "gestore": "MIMIT",
+      "livello": "nazionale",
+      "territori": ["IT"],
+      "stato": "aperto",
+      "procedura": "cronologico",
+      "agevolazioni": ["credito_imposta"],
+      "intensita_max_pct": 5,
+      "intensita_fondo_perduto_pct": null,
+      "contributo_max_eur": 2000000,
+      "dotazione_eur": 60000000,
+      "dimensioni_ammesse": ["micro", "piccola", "media", "grande"],
+      "beneficiari": ["impresa"],
+      "ateco_ammessi": null,
+      "categorie_spesa": ["design", "personale_ricerca", "consulenza"],
+      "calendario": {
+        "apertura_invio": "2026-07-07",
+        "orario_chiusura": "prenotazione fino a esaurimento della dotazione",
+        "ammissibilita_spese_da": "presentazione_domanda"
+      },
+      "requisiti": [
+        {
+          "codice": "PRENOTAZIONE_E_COMPLETAMENTO",
+          "descrizione": "Servono due comunicazioni al MIMIT: la prenotazione e, entro 30 giorni dalla chiusura del periodo d'imposta, quella di completamento",
+          "tipo": "dichiarativo"
+        },
+        {
+          "codice": "REALIZZAZIONE_70",
+          "descrizione": "Alla comunicazione di completamento deve risultare realizzato almeno il 70% degli investimenti prenotati",
+          "tipo": "dichiarativo"
+        },
+        {
+          "codice": "CERTIFICAZIONE_REVISORE",
+          "descrizione": "Certificazione delle spese da un revisore legale",
+          "tipo": "dichiarativo"
+        }
+      ],
+      "regime_aiuti": "fuori_regime",
+      "riserve": [],
+      "documenti": [
+        "Comunicazione di prenotazione al MIMIT",
+        "Comunicazione di completamento",
+        "Certificazione del revisore legale",
+        "Relazione tecnica sulle attività di design"
+      ],
+      "piattaforma": "Piattaforma MIMIT",
+      "fonti": [
+        {"url": "https://www.mimit.gov.it/it/incentivi/credito-d-imposta-r-s", "tipo": "ufficiale", "titolo": "Scheda MIMIT – credito d'imposta R&S, innovazione e design"}
+      ],
+      "ultimo_controllo": "2026-09-18",
+      "affidabilita_dati": "ufficiale",
+      "note": [
+        "Riguarda le attività di design e ideazione estetica: settori tessile e moda, calzaturiero, occhialeria, orafo, mobile e arredo, ceramica",
+        "Piattaforma aperta dal 07/07/2026 con dotazione di 60 milioni, decreto 03/07/2026",
+        "La prenotazione conta sull'ordine cronologico: la dotazione è una cifra chiusa"
+      ],
+      "tag": ["design", "moda", "arredo", "credito imposta"]
+    },
+    {
+      "id": "mcc-fondo-garanzia-pmi",
+      "titolo": "Fondo di garanzia per le PMI",
+      "ente": "MIMIT",
+      "gestore": "Mediocredito Centrale",
+      "livello": "nazionale",
+      "territori": ["IT"],
+      "stato": "sportello_continuo",
+      "procedura": "automatica",
+      "agevolazioni": ["garanzia"],
+      "intensita_max_pct": null,
+      "intensita_fondo_perduto_pct": null,
+      "base_calcolo": "garanzia",
+      "dimensioni_ammesse": ["micro", "piccola", "media"],
+      "beneficiari": ["impresa", "libero_professionista", "startup_innovativa", "ets"],
+      "ateco_ammessi": null,
+      "ateco_esclusi": ["64", "65", "66"],
+      "categorie_spesa": [],
+      "calendario": {},
+      "requisiti": [
+        {
+          "codice": "PASSA_DALLA_BANCA",
+          "descrizione": "L'impresa non può presentare domanda al Fondo: la richiesta la inoltra la banca che eroga il finanziamento oppure il confidi che rilascia la garanzia di primo livello",
+          "tipo": "dichiarativo"
+        },
+        {
+          "codice": "VALUTAZIONE_MERITO",
+          "descrizione": "L'accesso dipende dalla valutazione del merito creditizio secondo il modello di rating del Fondo: la garanzia riduce il rischio della banca, non sostituisce l'istruttoria",
+          "tipo": "dichiarativo"
+        },
+        {
+          "codice": "SETTORI_ESCLUSI",
+          "descrizione": "Escluse le attività finanziarie e assicurative, salvo eccezioni limitate",
+          "tipo": "dichiarativo"
+        }
+      ],
+      "regime_aiuti": "de_minimis",
+      "riserve": [],
+      "documenti": [
+        "Richiesta inoltrata dalla banca o dal confidi",
+        "Bilanci o dichiarazioni dei redditi degli ultimi esercizi",
+        "Documentazione del finanziamento da garantire"
+      ],
+      "piattaforma": "Portale del Fondo di garanzia (accesso riservato a banche e confidi)",
+      "fonti": [
+        {"url": "https://www.mimit.gov.it/it/incentivi/fondo-di-garanzia-per-le-pmi", "tipo": "ufficiale", "titolo": "Scheda MIMIT – Fondo di garanzia per le PMI"}
+      ],
+      "ultimo_controllo": "2026-09-18",
+      "affidabilita_dati": "ufficiale",
+      "note": [
+        "Copertura fino all'80% per le operazioni di investimento (garanzia diretta e riassicurazione), fino al 50% per la liquidità",
+        "Coperture rafforzate per startup, startup innovative, PMI innovative, enti del terzo settore e microcredito",
+        "Nessun costo per l'impresa sulla quota garantita: si evitano fideiussioni e polizze su quella parte",
+        "Ammessi anche i professionisti con partita IVA iscritti agli ordini o aderenti ad associazioni professionali",
+        "Il comitato di gestione si riunisce due volte a settimana: i tempi dipendono dalla banca, non dal Fondo",
+        "Il massimale garantito per singola impresa va verificato sulle disposizioni operative vigenti: non è riportato nella scheda ministeriale",
+        "Riferimento: legge 662/1996, art. 2 comma 100 lettera a), operativo dal 2000"
+      ],
+      "tag": ["garanzia", "credito", "banche", "sempre aperto"]
+    },
+    {
+      "id": "mimit-pmi-filiera-moda-2026",
+      "titolo": "PMI della filiera della moda",
+      "ente": "MIMIT",
+      "gestore": "MIMIT",
+      "livello": "nazionale",
+      "territori": ["IT"],
+      "stato": "in_apertura",
+      "procedura": "graduatoria",
+      "agevolazioni": ["fondo_perduto", "finanziamento_agevolato"],
+      "intensita_max_pct": null,
+      "intensita_fondo_perduto_pct": null,
+      "spesa_min_eur": 1000000,
+      "spesa_max_eur": 20000000,
+      "dotazione_eur": 100000000,
+      "dimensioni_ammesse": ["micro", "piccola", "media"],
+      "beneficiari": ["impresa"],
+      "ateco_ammessi": null,
+      "categorie_spesa": ["macchinari", "impianti", "digitale", "formazione", "ricerca_sviluppo"],
+      "calendario": {
+        "ammissibilita_spese_da": "presentazione_domanda"
+      },
+      "requisiti": [
+        {
+          "codice": "ATECO_FILIERA_MODA",
+          "descrizione": "L'impresa deve operare nella filiera della moda secondo i codici ATECO elencati nel DM 06/08/2026: l'elenco non è ancora trascritto in questa scheda",
+          "tipo": "dichiarativo"
+        },
+        {
+          "codice": "SOGLIA_PROGETTO",
+          "descrizione": "Programma di almeno 1.000.000 € (200.000 € per la quota di ciascuna impresa nei progetti congiunti) e non oltre 20.000.000 €",
+          "tipo": "dichiarativo"
+        }
+      ],
+      "regime_aiuti": "gber",
+      "riserve": [
+        "25% della dotazione riservata a micro e piccole imprese",
+        "40% della dotazione riservata alle regioni del Mezzogiorno (Abruzzo, Molise, Campania, Basilicata, Calabria, Puglia, Sicilia, Sardegna)"
+      ],
+      "documenti": [
+        "Programma di investimento con piano delle spese",
+        "Bilanci approvati",
+        "Relazione tecnica sul progetto"
+      ],
+      "piattaforma": "Da definire nel decreto direttoriale",
+      "fonti": [
+        {"url": "https://www.mimit.gov.it/it/incentivi/pmi-operanti-nella-filiera-della-moda", "tipo": "ufficiale", "titolo": "Scheda MIMIT – PMI della filiera della moda"}
+      ],
+      "ultimo_controllo": "2026-09-18",
+      "affidabilita_dati": "da_verificare",
+      "note": [
+        "Istituita dall'art. 3 della legge 34/2026, disciplinata dal DM 06/08/2026, 100 M€ dal Fondo per la crescita sostenibile",
+        "Al 18/09/2026 il decreto direttoriale con termini, modalità di presentazione e piattaforma non risulta pubblicato: date e intensità sono da leggere lì",
+        "Spese ammissibili: investimenti produttivi, innovazione di processo e organizzativa, formazione del personale, ricerca industriale e sviluppo sperimentale",
+        "Procedura valutativa con graduatoria, non a sportello"
+      ],
+      "tag": ["moda", "tessile", "manifattura", "in apertura"]
+    },
+    {
+      "id": "invitalia-autoimpiego-centro-nord",
+      "titolo": "Autoimpiego Centro-Nord",
+      "ente": "Ministero del Lavoro / Invitalia",
+      "gestore": "Invitalia",
+      "livello": "nazionale",
+      "territori": ["Piemonte", "Valle d'Aosta", "Liguria", "Lombardia", "Veneto", "Friuli-Venezia Giulia", "Trentino-Alto Adige", "Emilia-Romagna", "Toscana", "Lazio", "Umbria", "Marche"],
+      "stato": "sportello_continuo",
+      "procedura": "cronologico",
+      "agevolazioni": ["fondo_perduto"],
+      "intensita_max_pct": 65,
+      "intensita_fondo_perduto_pct": 65,
+      "contributo_max_eur": 120000,
+      "spesa_max_eur": 200000,
+      "dotazione_eur": 219600000,
+      "dimensioni_ammesse": ["micro", "piccola"],
+      "beneficiari": ["impresa", "impresa_da_costituire", "libero_professionista"],
+      "ateco_ammessi": null,
+      "ateco_esclusi": ["01", "02", "03"],
+      "categorie_spesa": ["avvio_impresa", "macchinari", "impianti", "digitale", "capitale_circolante"],
+      "calendario": {
+        "apertura_invio": "2025-10-15",
+        "ammissibilita_spese_da": "presentazione_domanda"
+      },
+      "requisiti": [
+        {
+          "codice": "ETA_18_35",
+          "descrizione": "Da 18 anni compiuti a 35 non compiuti alla data di avvio dell'attività",
+          "campo_profilo": "eta_titolare",
+          "operatore": "between",
+          "valore": [18, 35],
+          "bloccante": true
+        },
+        {
+          "codice": "IMPRESA_NUOVA",
+          "descrizione": "L'iniziativa deve essere avviata nel mese della domanda o in quello precedente e risultare ancora inattiva a quella data: un'impresa già operativa non è ammessa",
+          "campo_profilo": "impresa_nuova_o_da_costituire",
+          "operatore": "true",
+          "bloccante": true
+        },
+        {
+          "codice": "CONDIZIONE_SOGGETTIVA",
+          "descrizione": "Il richiedente deve essere disoccupato, inoccupato, inattivo, in percorso GOL oppure avere un reddito da lavoro sotto la no tax area",
+          "tipo": "dichiarativo"
+        },
+        {
+          "codice": "SETTORI_ESCLUSI",
+          "descrizione": "Esclusi i comparti agricolo, della pesca e dell'acquacoltura",
+          "tipo": "dichiarativo"
+        }
+      ],
+      "regime_aiuti": "de_minimis",
+      "riserve": [],
+      "documenti": [
+        "Documento d'identità",
+        "Business plan con piano spese",
+        "Preventivi",
+        "Autocertificazione della condizione occupazionale"
+      ],
+      "piattaforma": "Piattaforma Invitalia",
+      "fonti": [
+        {"url": "https://www.invitalia.it/incentivi-e-strumenti/autoimpiego-centro-nord", "tipo": "ufficiale", "titolo": "Invitalia – Autoimpiego Centro-Nord"}
+      ],
+      "ultimo_controllo": "2026-09-18",
+      "affidabilita_dati": "ufficiale",
+      "note": [
+        "È la misura gemella di Resto al Sud 2.0 per le regioni del Centro-Nord: stessi requisiti soggettivi, percentuali leggermente diverse",
+        "65% a fondo perduto fino a 120.000 € di programma, 60% tra 120.001 e 200.000 €",
+        "In alternativa, voucher a fondo perduto fino a 30.000 € (elevabile a 40.000 €)",
+        "Sportello aperto dal 15/10/2025, domande esaminate entro 90 giorni in ordine cronologico nei limiti dei 219,6 M€",
+        "Nel Mezzogiorno la misura corrispondente è Resto al Sud 2.0: le due non si sovrappongono"
+      ],
+      "tag": ["giovani", "avvio impresa", "centro-nord", "fondo perduto"]
+    },
+    {
+      "id": "simest-finanziamenti-internazionalizzazione",
+      "titolo": "SIMEST – finanziamenti agevolati per l'internazionalizzazione",
+      "ente": "MAECI / SIMEST",
+      "gestore": "SIMEST (gruppo CDP)",
+      "livello": "nazionale",
+      "territori": ["IT"],
+      "stato": "sportello_continuo",
+      "procedura": "cronologico",
+      "agevolazioni": ["finanziamento_agevolato", "fondo_perduto"],
+      "intensita_max_pct": null,
+      "intensita_fondo_perduto_pct": 10,
+      "contributo_max_eur": 100000,
+      "dimensioni_ammesse": ["micro", "piccola", "media"],
+      "beneficiari": ["impresa"],
+      "ateco_ammessi": null,
+      "categorie_spesa": ["internazionalizzazione", "digitale", "consulenza", "formazione"],
+      "calendario": {
+        "orario_chiusura": "sportello permanente, fino a esaurimento delle risorse di ciascuna linea",
+        "ammissibilita_spese_da": "presentazione_domanda"
+      },
+      "requisiti": [
+        {
+          "codice": "LINEA_SPECIFICA",
+          "descrizione": "Ogni linea (transizione digitale o ecologica, inserimento mercati esteri, e-commerce, fiere ed eventi, certificazioni e consulenze, temporary manager, mercati africani, India, America centro-meridionale) ha importi, durate e requisiti propri: verificare la scheda della linea prima di impostare la domanda",
+          "tipo": "dichiarativo"
+        },
+        {
+          "codice": "BILANCI_DEPOSITATI",
+          "descrizione": "Servono bilanci depositati e, per alcune linee, una quota di fatturato estero: il requisito varia per linea",
+          "tipo": "dichiarativo"
+        },
+        {
+          "codice": "QUOTA_FONDO_PERDUTO",
+          "descrizione": "La quota a fondo perduto spetta solo alle imprese con requisiti specifici: PMI innovative, giovanili, femminili, con sede operativa nel Mezzogiorno, o con requisiti di sostenibilità",
+          "tipo": "dichiarativo"
+        }
+      ],
+      "regime_aiuti": "de_minimis",
+      "riserve": [],
+      "documenti": [
+        "Bilanci depositati degli ultimi esercizi",
+        "Piano di internazionalizzazione o di investimento sulla linea scelta",
+        "Documentazione del fatturato estero dove richiesta"
+      ],
+      "piattaforma": "Portale SIMEST",
+      "fonti": [
+        {"url": "https://www.simest.it/per-le-imprese/finanziamenti-agevolati/finanziamenti-agevolati-internazionalizzazione/", "tipo": "ufficiale", "titolo": "SIMEST – finanziamenti agevolati per l'internazionalizzazione"},
+        {"url": "https://www.assolombarda.it/servizi/credito-finanza-e-incentivi/informazioni/bandi-simest", "tipo": "secondaria", "titolo": "Assolombarda – bandi SIMEST, condizioni e linee attive"}
+      ],
+      "ultimo_controllo": "2026-09-18",
+      "affidabilita_dati": "secondaria",
+      "note": [
+        "Scheda di ingresso a nove linee diverse: serve a far capire a un agente che lo strumento esiste ed è sempre aperto, non a sostituire la scheda della singola linea",
+        "Tasso agevolato pari al 10% del tasso di riferimento UE: a gennaio 2026 lo 0,319%",
+        "Quota a fondo perduto fino al 10% dell'intervento con massimale 100.000 €, solo per le imprese con i requisiti specifici",
+        "Le linee finanziate dal PNRR si sono chiuse in pochi giorni dalla riapertura: sulle finestre PNRR la tempestività conta più dell'istruttoria",
+        "Importi massimi e durate per linea non sono pubblicati nella pagina indice: vanno letti sulla scheda della linea scelta"
+      ],
+      "tag": ["internazionalizzazione", "export", "tasso agevolato", "sempre aperto"]
+    },
+    {
+      "id": "mimit-disegni-plus-2026",
+      "titolo": "Disegni+ 2026",
+      "ente": "MIMIT",
+      "gestore": "Unioncamere",
+      "livello": "nazionale",
+      "territori": ["IT"],
+      "stato": "in_apertura",
+      "procedura": "cronologico",
+      "agevolazioni": ["fondo_perduto"],
+      "intensita_max_pct": null,
+      "intensita_fondo_perduto_pct": null,
+      "dotazione_eur": 10000000,
+      "dimensioni_ammesse": ["micro", "piccola", "media"],
+      "beneficiari": ["impresa"],
+      "ateco_ammessi": null,
+      "categorie_spesa": ["proprieta_intellettuale", "design", "consulenza"],
+      "calendario": {
+        "ammissibilita_spese_da": "presentazione_domanda"
+      },
+      "requisiti": [
+        {
+          "codice": "DISEGNO_REGISTRATO",
+          "descrizione": "Titolarità di un disegno o modello registrato da valorizzare: il requisito esatto va letto nell'avviso attuativo non ancora pubblicato",
+          "tipo": "dichiarativo"
+        }
+      ],
+      "regime_aiuti": "de_minimis",
+      "riserve": [],
+      "documenti": [
+        "Attestato di registrazione del disegno o modello",
+        "Piano di valorizzazione",
+        "Preventivi dei fornitori"
+      ],
+      "piattaforma": "Da definire nell'avviso attuativo",
+      "fonti": [
+        {"url": "https://www.mimit.gov.it/it/notizie-stampa/mimit-32-milioni-per-valorizzare-la-proprieta-industriale-delle-pmi", "tipo": "ufficiale", "titolo": "MIMIT – 32 milioni per la proprietà industriale delle PMI (decreto direttoriale 28/07/2026)"}
+      ],
+      "ultimo_controllo": "2026-09-18",
+      "affidabilita_dati": "da_verificare",
+      "note": [
+        "Riaperta dal decreto direttoriale MIMIT del 28/07/2026 con 10 M€, insieme a Brevetti+ (20 M€) e Marchi+ (2 M€)",
+        "Al 18/09/2026 l'avviso attuativo con requisiti, importi e date di apertura non risulta pubblicato: questa scheda serve a far sapere che la misura sta per riaprire, non a preparare una domanda"
+      ],
+      "tag": ["disegni", "modelli", "proprietà intellettuale", "in apertura"]
+    },
+    {
+      "id": "mimit-marchi-plus-2026",
+      "titolo": "Marchi+ 2026",
+      "ente": "MIMIT",
+      "gestore": "Unioncamere",
+      "livello": "nazionale",
+      "territori": ["IT"],
+      "stato": "in_apertura",
+      "procedura": "cronologico",
+      "agevolazioni": ["fondo_perduto"],
+      "intensita_max_pct": null,
+      "intensita_fondo_perduto_pct": null,
+      "dotazione_eur": 2000000,
+      "dimensioni_ammesse": ["micro", "piccola", "media"],
+      "beneficiari": ["impresa"],
+      "ateco_ammessi": null,
+      "categorie_spesa": ["proprieta_intellettuale", "consulenza", "internazionalizzazione"],
+      "calendario": {
+        "ammissibilita_spese_da": "presentazione_domanda"
+      },
+      "requisiti": [
+        {
+          "codice": "MARCHIO_DA_ESTENDERE",
+          "descrizione": "Titolarità di un marchio nazionale da estendere in Unione Europea o all'estero: il requisito esatto va letto nell'avviso attuativo non ancora pubblicato",
+          "tipo": "dichiarativo"
+        }
+      ],
+      "regime_aiuti": "de_minimis",
+      "riserve": [],
+      "documenti": [
+        "Attestato di registrazione del marchio nazionale",
+        "Preventivi per il deposito e la consulenza"
+      ],
+      "piattaforma": "Da definire nell'avviso attuativo",
+      "fonti": [
+        {"url": "https://www.mimit.gov.it/it/notizie-stampa/mimit-32-milioni-per-valorizzare-la-proprieta-industriale-delle-pmi", "tipo": "ufficiale", "titolo": "MIMIT – 32 milioni per la proprietà industriale delle PMI (decreto direttoriale 28/07/2026)"}
+      ],
+      "ultimo_controllo": "2026-09-18",
+      "affidabilita_dati": "da_verificare",
+      "note": [
+        "Riaperta dal decreto direttoriale MIMIT del 28/07/2026 con 2 M€, la dotazione più piccola delle tre misure sulla proprietà industriale",
+        "Al 18/09/2026 l'avviso attuativo non risulta pubblicato",
+        "Per la tutela di marchi, disegni e brevetti esiste anche EUIPO SME Fund, aperto e con procedura più semplice: vedi euipo-sme-fund-2026"
+      ],
+      "tag": ["marchi", "proprietà intellettuale", "estero", "in apertura"]
+    },
+    {
+      "id": "inail-bando-isi-2025",
+      "titolo": "Bando ISI INAIL (edizione 2025, domande nel 2026)",
+      "ente": "INAIL",
+      "gestore": "INAIL",
+      "livello": "nazionale",
+      "territori": ["IT"],
+      "stato": "chiuso",
+      "procedura": "cronologico",
+      "agevolazioni": ["fondo_perduto"],
+      "intensita_max_pct": 65,
+      "intensita_fondo_perduto_pct": 65,
+      "contributo_max_eur": 130000,
+      "dotazione_eur": 600000000,
+      "dimensioni_ammesse": ["micro", "piccola", "media", "grande"],
+      "beneficiari": ["impresa"],
+      "ateco_ammessi": null,
+      "categorie_spesa": ["sicurezza_lavoro", "macchinari", "impianti", "formazione"],
+      "calendario": {
+        "apertura_compilazione": "2026-04-13",
+        "chiusura": "2026-05-28",
+        "orario_chiusura": "chiusura della compilazione alle 18:00 del 28/05/2026, seguita dal click day",
+        "ammissibilita_spese_da": "presentazione_domanda"
+      },
+      "requisiti": [
+        {
+          "codice": "CLICK_DAY",
+          "descrizione": "L'assegnazione avviene con un click day: conta il momento dell'invio, non la qualità del progetto. La domanda va preparata e validata nelle settimane precedenti",
+          "tipo": "dichiarativo"
+        },
+        {
+          "codice": "PUNTEGGIO_SOGLIA",
+          "descrizione": "Il progetto deve raggiungere il punteggio minimo previsto dall'asse di finanziamento per essere ammesso al click day",
+          "tipo": "dichiarativo"
+        },
+        {
+          "codice": "REGOLARITA_CONTRIBUTIVA",
+          "descrizione": "DURC regolare e rispetto degli obblighi assicurativi e contributivi",
+          "campo_profilo": "durc_regolare",
+          "operatore": "true",
+          "bloccante": false
+        }
+      ],
+      "regime_aiuti": "de_minimis",
+      "riserve": [],
+      "documenti": [
+        "Progetto di miglioramento delle condizioni di salute e sicurezza",
+        "Preventivi dei fornitori",
+        "Documentazione tecnica dell'intervento",
+        "DURC"
+      ],
+      "piattaforma": "Portale INAIL (servizi online)",
+      "fonti": [
+        {"url": "https://www.inail.it/portale/prevenzione-e-sicurezza/it/prevenzione-e-sicurezza/finanziamenti-per-la-sicurezza/incentivi-alle-imprese.html", "tipo": "ufficiale", "titolo": "INAIL – Incentivi alle imprese (Bando ISI)"},
+        {"url": "https://www.confcommercio.it/-/bando-isi-inail", "tipo": "secondaria", "titolo": "Confcommercio – Bando ISI INAIL, requisiti e click day"}
+      ],
+      "ultimo_controllo": "2026-09-18",
+      "affidabilita_dati": "secondaria",
+      "note": [
+        "Attenzione al nome: l'edizione si chiama con l'anno di pubblicazione (ISI 2025) ma le domande si presentano l'anno dopo. La finestra 13/04/2026 - 28/05/2026 è chiusa",
+        "Contributo a fondo perduto fino al 65% delle spese, massimo 130.000 €, su una dotazione di circa 600 M€",
+        "In alcuni assi la percentuale sale all'80%, per esempio per i giovani agricoltori e per l'adozione di sistemi di gestione della sicurezza",
+        "È una misura annuale ricorrente: la prossima edizione va attesa e preparata prima, perché l'assegnazione è a click day",
+        "Le date di questa scheda vengono da fonti secondarie: la pagina INAIL è un indice delle edizioni e non le riporta"
+      ],
+      "tag": ["sicurezza", "lavoro", "click day", "annuale", "ricorrente"]
+    }
+  ]
+}

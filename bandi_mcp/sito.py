@@ -24,6 +24,7 @@ from datetime import date
 from pathlib import Path
 from typing import Any, Iterable
 
+from .matcher import SPIEGAZIONE_BASE_CALCOLO
 from .schema import Bando
 from .store import carica_catalogo
 
@@ -125,7 +126,7 @@ def _righe_identita(b: Bando) -> list[tuple[str, str]]:
         ("Ente", _e(b.ente) + (f" (gestito da {_e(b.gestore)})" if b.gestore else "")),
         ("Stato", _e(_STATO_LEGGIBILE.get(b.stato, b.stato))),
         ("Livello", _e(b.livello)),
-        ("Territori ammessi", _e(", ".join(b.territori))),
+        ("Territori ammessi", _e(_dove(b))),
         ("Dimensioni d'impresa", _e(", ".join(b.dimensioni_ammesse))),
         ("Beneficiari", _e(", ".join(b.beneficiari))),
         ("Forma dell'agevolazione", _e(", ".join(a.replace("_", " ") for a in b.agevolazioni))),
@@ -154,12 +155,9 @@ def _righe_importi(b: Bando) -> list[tuple[str, str]]:
     ):
         if valore:
             righe.append((etichetta, _e(valore)))
-    if b.base_calcolo == "massimali_specifici":
-        righe.append((
-            "Come si calcola",
-            "non è una percentuale della spesa totale: l'importo dipende dai massimali di spesa "
-            "specifica per tipologia di intervento (€/kW, €/m²) e dai tetti per intervento",
-        ))
+    if b.base_calcolo != "spesa_ammissibile":
+        # stessa spiegazione che il motore restituisce all'agente: non possono divergere
+        righe.append(("Come si calcola", _e(SPIEGAZIONE_BASE_CALCOLO[b.base_calcolo])))
     return righe
 
 

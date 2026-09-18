@@ -24,6 +24,26 @@ REGIONI_MEZZOGIORNO_7 = ["Basilicata", "Calabria", "Campania", "Molise", "Puglia
 REGIONI_MEZZOGIORNO_8 = REGIONI_MEZZOGIORNO_7 + ["Abruzzo"]
 PLAFOND_DE_MINIMIS_EUR = 300_000.0  # Reg. UE 2023/2831, triennio mobile
 
+# Perché su questi bandi non diamo una cifra: meglio dire dove sta il calcolo vero
+# che restituire una stima che non sappiamo difendere.
+SPIEGAZIONE_BASE_CALCOLO = {
+    "massimali_specifici": (
+        "L'incentivo non è una percentuale della spesa totale: dipende dai massimali di spesa "
+        "specifica per tipologia di intervento (€/kW, €/m²) e dai tetti per intervento. "
+        "Calcolarlo sulle tabelle dell'avviso, intervento per intervento"
+    ),
+    "maggiorazione_ammortamento": (
+        "Il beneficio non è un contributo ma una maggiorazione del costo deducibile: vale solo se "
+        "l'impresa ha reddito imponibile capiente e dipende dalla sua aliquota. Quantificarlo con "
+        "il commercialista sul piano fiscale dei prossimi esercizi"
+    ),
+    "garanzia": (
+        "Non è una somma erogata: è una garanzia pubblica che riduce il rischio per la banca. "
+        "Il beneficio è l'accesso al credito e il minor costo del finanziamento, non un importo "
+        "incassato. La richiesta passa dalla banca o dal confidi, non dall'impresa"
+    ),
+}
+
 
 # --------------------------------------------------------------------------- #
 # Utilità
@@ -325,12 +345,8 @@ def valuta(bando: Bando, profilo: ProfiloAzienda, oggi: Optional[date] = None) -
             fattori.append("-10 rischio spese anticipate non ammissibili")
 
     # --- base di calcolo dell'agevolazione -------------------------------- #
-    if bando.base_calcolo == "massimali_specifici":
-        verifiche.append(
-            "L'incentivo non è una percentuale della spesa totale: dipende dai massimali di spesa "
-            "specifica per tipologia di intervento (€/kW, €/m²) e dai tetti per intervento. "
-            "Calcolarlo sulle tabelle dell'avviso, intervento per intervento"
-        )
+    if bando.base_calcolo != "spesa_ammissibile":
+        verifiche.append(SPIEGAZIONE_BASE_CALCOLO[bando.base_calcolo])
 
     # --- affidabilità dei dati ------------------------------------------- #
     if bando.affidabilita_dati == "da_verificare":

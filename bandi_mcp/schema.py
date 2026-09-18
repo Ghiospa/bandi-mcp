@@ -35,6 +35,9 @@ CategoriaSpesa = Literal[
     "capitale_circolante",
     "consulenza",
     "produzione_culturale",
+    "personale_ricerca",
+    "design",
+    "sicurezza_lavoro",
 ]
 
 FormaGiuridica = Literal[
@@ -241,7 +244,16 @@ class Bando(BaseModel):
     procedura: Literal["cronologico", "cronologico_giornaliero", "valutativa", "graduatoria", "automatica"]
 
     agevolazioni: list[
-        Literal["fondo_perduto", "finanziamento_agevolato", "tasso_zero", "credito_imposta", "voucher", "garanzia", "contributo_interessi"]
+        Literal[
+            "fondo_perduto",
+            "finanziamento_agevolato",
+            "tasso_zero",
+            "credito_imposta",
+            "voucher",
+            "garanzia",
+            "contributo_interessi",
+            "maggiorazione_ammortamento",
+        ]
     ]
     intensita_max_pct: Optional[float] = None
     intensita_fondo_perduto_pct: Optional[float] = None
@@ -249,11 +261,15 @@ class Bando(BaseModel):
     spesa_min_eur: Optional[float] = None
     spesa_max_eur: Optional[float] = None
     dotazione_eur: Optional[float] = None
-    base_calcolo: Literal["spesa_ammissibile", "massimali_specifici"] = Field(
+    base_calcolo: Literal[
+        "spesa_ammissibile", "massimali_specifici", "maggiorazione_ammortamento", "garanzia"
+    ] = Field(
         "spesa_ammissibile",
-        description="Come si determina l'agevolazione. 'spesa_ammissibile': intensità × spesa. "
-        "'massimali_specifici': l'importo dipende da massimali per unità (€/kW, €/m²) e da tetti per "
-        "tipologia di intervento, quindi il motore non stima una cifra dal totale di spesa.",
+        description="Come si determina il beneficio, e quindi se il motore può stimarlo dal totale di spesa. "
+        "'spesa_ammissibile': intensità × spesa, l'unico caso in cui la stima ha senso. "
+        "'massimali_specifici': dipende da massimali per unità (€/kW, €/m²) e tetti per intervento. "
+        "'maggiorazione_ammortamento': è una deduzione fiscale, il beneficio dipende dall'aliquota e dal "
+        "reddito imponibile dell'impresa. 'garanzia': non è una somma, è accesso al credito.",
     )
 
     dimensioni_ammesse: list[Dimensione] = Field(default_factory=lambda: ["micro", "piccola", "media"])

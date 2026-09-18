@@ -177,3 +177,38 @@ def test_resto_al_sud_ammette_impresa_da_costituire():
     e = matcher.valuta(trova_bando("invitalia-resto-al-sud-2-0"), p, OGGI)
     assert e.esito != "non_ammissibile"
     assert not any(m.codice == "IMPRESA_NUOVA" for m in e.motivi_esclusione)
+
+
+def test_garanzia_non_viene_stimata_come_contributo():
+    """Una garanzia non è una somma incassata: stimarla come contributo ingannerebbe l'agente."""
+    p = ProfiloAzienda(
+        ateco="25.62", regione="Sicilia", addetti_ula=14, fatturato_ultimo_eur=2_100_000,
+        investimento={"importo_eur": 900_000, "categorie": ["macchinari"]},
+    )
+    e = matcher.valuta(trova_bando("mcc-fondo-garanzia-pmi"), p, OGGI)
+    assert e.stima_agevolazione_eur is None
+    assert any("accesso al credito" in v for v in e.verifiche_manuali)
+
+
+def test_iperammortamento_non_viene_stimato_come_contributo():
+    p = ProfiloAzienda(
+        ateco="25.62", regione="Sicilia", addetti_ula=14, fatturato_ultimo_eur=2_100_000,
+        investimento={"importo_eur": 900_000, "categorie": ["macchinari"]},
+    )
+    e = matcher.valuta(trova_bando("mimit-transizione-5-0-iperammortamento"), p, OGGI)
+    assert e.stima_agevolazione_eur is None
+    assert any("deducibile" in v for v in e.verifiche_manuali)
+
+
+def test_ogni_scheda_da_verificare_dice_perche():
+    """`da_verificare` senza una nota che spieghi cosa manca è una scheda abbandonata, non una scheda onesta."""
+    for b in carica_catalogo():
+        if b.affidabilita_dati == "da_verificare":
+            assert b.note, f"{b.id}: da_verificare senza note"
+
+
+def test_autoimpiego_e_resto_al_sud_non_si_sovrappongono():
+    """Le due misure gemelle coprono territori disgiunti: un'impresa non può vedersele entrambe."""
+    sud = trova_bando("invitalia-resto-al-sud-2-0")
+    nord = trova_bando("invitalia-autoimpiego-centro-nord")
+    assert not (set(sud.territori) & set(nord.territori))
