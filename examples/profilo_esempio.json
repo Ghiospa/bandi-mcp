@@ -1,0 +1,22 @@
+{
+  "ragione_sociale": "Officine Meccaniche Iblee srl",
+  "partita_iva": "01234567890",
+  "ateco": "25.62",
+  "forma_giuridica": "srl",
+  "regione": "Sicilia",
+  "provincia": "RG",
+  "comune": "Ragusa",
+  "addetti_ula": 14,
+  "fatturato_ultimo_eur": 2100000,
+  "data_costituzione": "2015-03-10",
+  "dipendenti_totali": 14,
+  "durc_regolare": true,
+  "connettivita_mbps": 100,
+  "de_minimis_ricevuti_36_mesi_eur": 12000,
+  "investimento": {
+    "importo_eur": 900000,
+    "categorie": ["macchinari", "digitale"],
+    "descrizione": "Nuova linea CNC con MES e manutenzione predittiva",
+    "avvio_previsto": "2026-11-15"
+  }
+}

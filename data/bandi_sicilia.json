@@ -1,0 +1,863 @@
+{
+  "territorio": "Sicilia",
+  "versione": "2026-09-18",
+  "nota": "Catalogo iniziale: misure nazionali aperte alle imprese siciliane + misure regionali. Ogni scheda riporta fonti e data dell'ultimo controllo. I dati vanno riverificati sul testo dell'avviso prima di una domanda.",
+  "bandi": [
+    {
+      "id": "mimit-investimenti-sostenibili-40-2026",
+      "titolo": "Investimenti Sostenibili 4.0 (edizione 2026)",
+      "ente": "MIMIT",
+      "gestore": "Invitalia",
+      "livello": "nazionale",
+      "territori": ["Basilicata", "Calabria", "Campania", "Molise", "Puglia", "Sardegna", "Sicilia"],
+      "stato": "aperto",
+      "procedura": "cronologico_giornaliero",
+      "agevolazioni": ["fondo_perduto", "finanziamento_agevolato"],
+      "intensita_max_pct": 75,
+      "intensita_fondo_perduto_pct": 35,
+      "spesa_min_eur": 750000,
+      "spesa_max_eur": 5000000,
+      "dotazione_eur": 447595808.76,
+      "dimensioni_ammesse": ["micro", "piccola", "media"],
+      "beneficiari": ["impresa"],
+      "ateco_ammessi": ["C"],
+      "categorie_spesa": ["macchinari", "impianti", "digitale", "efficienza_energetica"],
+      "calendario": {
+        "apertura_compilazione": "2026-09-10",
+        "apertura_invio": "2026-10-06",
+        "chiusura": null,
+        "orario_chiusura": "sportello 10:00-17:00 nei giorni feriali, fino a esaurimento",
+        "ammissibilita_spese_da": "presentazione_domanda"
+      },
+      "requisiti": [
+        {
+          "codice": "MEZZI_PROPRI_25",
+          "descrizione": "Almeno il 25% del programma coperto con risorse proprie prive di qualsiasi sostegno pubblico (art. 14 par. 14 Reg. UE 651/2014): una garanzia pubblica sul mutuo NON basta",
+          "tipo": "dichiarativo"
+        },
+        {
+          "codice": "TECNOLOGIE_4_0",
+          "descrizione": "Il programma deve integrare tecnologie abilitanti 4.0 e documentare la sostenibilità ambientale (pesa nella graduatoria di giornata)",
+          "tipo": "dichiarativo"
+        }
+      ],
+      "regime_aiuti": "gber",
+      "riserve": ["25% della dotazione riservata a micro e piccole imprese"],
+      "documenti": [
+        "Preventivi analitici dei fornitori (non listini)",
+        "Relazione tecnica: tecnologie abilitanti e peso sulle spese",
+        "Documentazione della sostenibilità ambientale del programma",
+        "Ultimi due bilanci approvati",
+        "Firma digitale valida e non in scadenza",
+        "DURC regolare"
+      ],
+      "piattaforma": "Piattaforma Invitalia",
+      "fonti": [
+        {"url": "https://www.mimit.gov.it/it/incentivi/investimenti-sostenibili-4-0-2026", "tipo": "ufficiale", "titolo": "Scheda MIMIT"},
+        {"url": "https://www.incentivimpresa.it/bandi-fondo-perduto-attivi/", "tipo": "secondaria", "titolo": "Calendario Incentivimpresa, agg. 16/09/2026"}
+      ],
+      "ultimo_controllo": "2026-09-18",
+      "affidabilita_dati": "secondaria",
+      "note": [
+        "Conta il giorno di invio, non l'ora: le domande dello stesso giorno sono contemporanee; se le risorse non bastano si forma una graduatoria su solidità economico-finanziaria e sostenibilità ambientale",
+        "Contributo in conto impianti fino al 35% + finanziamento agevolato fino al 40%",
+        "L'elenco dei settori manifatturieri ammessi/esclusi va verificato nel decreto 18/03/2026"
+      ],
+      "tag": ["manifattura", "industria 4.0", "mezzogiorno", "investimenti"]
+    },
+    {
+      "id": "mimit-scoperta-imprenditoriale-ii",
+      "titolo": "Scoperta Imprenditoriale II (Fondo per la crescita sostenibile)",
+      "ente": "MIMIT",
+      "gestore": "Soggetto gestore MIMIT",
+      "livello": "nazionale",
+      "territori": ["Basilicata", "Calabria", "Campania", "Molise", "Puglia", "Sardegna", "Sicilia"],
+      "stato": "in_apertura",
+      "procedura": "cronologico_giornaliero",
+      "agevolazioni": ["fondo_perduto", "finanziamento_agevolato"],
+      "intensita_max_pct": null,
+      "intensita_fondo_perduto_pct": null,
+      "spesa_min_eur": 1000000,
+      "spesa_max_eur": 5000000,
+      "dotazione_eur": 505801524.89,
+      "dimensioni_ammesse": ["micro", "piccola", "media", "grande"],
+      "beneficiari": ["impresa"],
+      "ateco_ammessi": null,
+      "categorie_spesa": ["ricerca_sviluppo"],
+      "calendario": {
+        "apertura_compilazione": "2026-09-24",
+        "apertura_invio": "2026-10-07",
+        "chiusura": null,
+        "orario_chiusura": "a esaurimento risorse (la prima edizione fu sospesa il giorno stesso dell'apertura)",
+        "ammissibilita_spese_da": "presentazione_domanda"
+      },
+      "requisiti": [
+        {
+          "codice": "PROGETTO_MAX_60_FATTURATO",
+          "descrizione": "Le spese di progetto non possono superare il 60% della media del fatturato degli ultimi due esercizi",
+          "tipo": "dichiarativo"
+        },
+        {
+          "codice": "INDICATORI_BILANCIO",
+          "descrizione": "Due indicatori di bilancio decidono l'ammissibilità prima della valutazione tecnica: verificare la solidità con il consulente",
+          "tipo": "dichiarativo"
+        },
+        {
+          "codice": "RICERCA_INDUSTRIALE",
+          "descrizione": "Progetto di ricerca industriale e/o sviluppo sperimentale coerente con le aree di specializzazione intelligente",
+          "tipo": "dichiarativo"
+        }
+      ],
+      "regime_aiuti": "gber",
+      "riserve": ["60% della dotazione riservata a PMI e reti di imprese"],
+      "documenti": [
+        "Piano di sviluppo del progetto (prende punteggio)",
+        "Accordo di collaborazione se progetto congiunto",
+        "Ultimi due bilanci per gli indicatori di ammissibilità",
+        "Firma digitale"
+      ],
+      "piattaforma": "Piattaforma del Soggetto gestore",
+      "fonti": [
+        {"url": "https://www.mimit.gov.it/it/incentivi/scoperta-imprenditoriale", "tipo": "ufficiale", "titolo": "Scheda MIMIT"},
+        {"url": "https://www.incentivimpresa.it/bandi-fondo-perduto-attivi/", "tipo": "secondaria", "titolo": "Calendario Incentivimpresa, agg. 16/09/2026"}
+      ],
+      "ultimo_controllo": "2026-09-18",
+      "affidabilita_dati": "secondaria",
+      "note": [
+        "Sopra i 5 milioni la misura di riferimento sono gli Accordi per l'Innovazione",
+        "Intensità dipende da dimensione e tipologia di attività (ricerca vs sviluppo): da verificare nel decreto"
+      ],
+      "tag": ["ricerca", "sviluppo sperimentale", "mezzogiorno", "innovazione"]
+    },
+    {
+      "id": "invitalia-sviluppo-competenze-mezzogiorno-2026",
+      "titolo": "Sviluppo Competenze Mezzogiorno – secondo sportello",
+      "ente": "MIMIT",
+      "gestore": "Invitalia",
+      "livello": "nazionale",
+      "territori": ["Abruzzo", "Basilicata", "Calabria", "Campania", "Molise", "Puglia", "Sardegna", "Sicilia"],
+      "stato": "aperto",
+      "procedura": "cronologico",
+      "agevolazioni": ["fondo_perduto"],
+      "intensita_max_pct": 50,
+      "intensita_fondo_perduto_pct": 50,
+      "contributo_max_eur": 42000,
+      "dimensioni_ammesse": ["micro", "piccola", "media"],
+      "beneficiari": ["impresa"],
+      "ateco_ammessi": null,
+      "categorie_spesa": ["formazione"],
+      "calendario": {
+        "apertura_compilazione": "2026-09-10",
+        "apertura_invio": "2026-09-10",
+        "chiusura": "2026-12-21",
+        "orario_chiusura": "12:00",
+        "ammissibilita_spese_da": "presentazione_domanda"
+      },
+      "requisiti": [
+        {
+          "codice": "PIANO_FORMATIVO",
+          "descrizione": "Piano formativo su digitalizzazione, transizione verde o innovazione tecnologica per il personale",
+          "tipo": "dichiarativo"
+        },
+        {
+          "codice": "HA_DIPENDENTI",
+          "descrizione": "Servono dipendenti da formare",
+          "campo_profilo": "dipendenti_totali",
+          "operatore": ">=",
+          "valore": 1,
+          "bloccante": true
+        }
+      ],
+      "regime_aiuti": "de_minimis",
+      "riserve": ["40% della dotazione riservata ai settori automotive, moda, tessile e arredo"],
+      "documenti": ["Piano formativo con ore, destinatari e fornitore", "Preventivo dell'ente formativo", "DURC regolare"],
+      "piattaforma": "Piattaforma Invitalia",
+      "fonti": [
+        {"url": "https://www.incentivimpresa.it/bandi-fondo-perduto-attivi/", "tipo": "secondaria", "titolo": "Calendario Incentivimpresa, agg. 16/09/2026"}
+      ],
+      "ultimo_controllo": "2026-09-18",
+      "affidabilita_dati": "secondaria",
+      "note": ["Misura naturale per finanziare formazione AI/digitale del personale di una PMI"],
+      "tag": ["formazione", "digitale", "AI", "mezzogiorno"]
+    },
+    {
+      "id": "mimit-voucher-cloud-cybersecurity-2026",
+      "titolo": "Voucher Cloud e Cybersecurity",
+      "ente": "MIMIT",
+      "gestore": "MIMIT",
+      "livello": "nazionale",
+      "territori": ["IT"],
+      "stato": "in_apertura",
+      "procedura": "cronologico",
+      "agevolazioni": ["voucher", "fondo_perduto"],
+      "intensita_max_pct": 50,
+      "intensita_fondo_perduto_pct": 50,
+      "contributo_max_eur": 20000,
+      "spesa_min_eur": 4000,
+      "dotazione_eur": 150000000,
+      "dimensioni_ammesse": ["micro", "piccola", "media"],
+      "beneficiari": ["impresa", "libero_professionista"],
+      "ateco_ammessi": null,
+      "categorie_spesa": ["cloud_cyber", "digitale"],
+      "calendario": {
+        "apertura_compilazione": "2026-10-20",
+        "apertura_invio": "2026-11-10",
+        "chiusura": "2027-01-20",
+        "orario_chiusura": "12:00, salvo esaurimento anticipato",
+        "ammissibilita_spese_da": "presentazione_domanda"
+      },
+      "requisiti": [
+        {
+          "codice": "CONNETTIVITA_30MBPS",
+          "descrizione": "Contratto di connettività attivo con almeno 30 Mbps in download alla data della domanda",
+          "campo_profilo": "connettivita_mbps",
+          "operatore": ">=",
+          "valore": 30,
+          "bloccante": true
+        },
+        {
+          "codice": "FORNITORI_ABILITATI",
+          "descrizione": "Preventivi solo da fornitori nell'elenco MIMIT approvato il 29/07/2026, per la categoria di servizio corretta",
+          "tipo": "dichiarativo"
+        },
+        {
+          "codice": "SERVIZI_PROF_MAX_30",
+          "descrizione": "Servizi professionali di configurazione e supporto entro il 30% del piano",
+          "tipo": "dichiarativo"
+        }
+      ],
+      "regime_aiuti": "de_minimis",
+      "riserve": ["71.065.813 € riservati a piani realizzati in Abruzzo, Basilicata, Calabria, Campania, Molise, Puglia, Sardegna e Sicilia"],
+      "documenti": ["Preventivi di fornitori abilitati", "Contratto di connettività", "DURC", "Firma digitale"],
+      "piattaforma": "Piattaforma MIMIT",
+      "fonti": [
+        {"url": "https://www.mimit.gov.it/it/incentivi/sostegno-alla-domanda-di-servizi-di-cloud-computing-e-cyber-security", "tipo": "ufficiale", "titolo": "Scheda MIMIT"},
+        {"url": "https://www.incentivimpresa.it/bandi-fondo-perduto-attivi/", "tipo": "secondaria", "titolo": "Calendario Incentivimpresa, agg. 16/09/2026"}
+      ],
+      "ultimo_controllo": "2026-09-18",
+      "affidabilita_dati": "secondaria",
+      "note": [
+        "Decisione da prendere subito: canoni cloud/antivirus/backup in scadenza tra settembre e ottobre vanno rinegoziati con decorrenza dopo il 10 novembre, altrimenti non sono ammissibili",
+        "Il contributo è in conto esercizio: ritenuta 4% e tassazione nell'anno; copertura reale ~36% invece del 50% nominale",
+        "Ammessi IaaS, PaaS, SaaS, hardware e software di cybersecurity"
+      ],
+      "tag": ["cloud", "cybersecurity", "digitale", "PMI", "professionisti"]
+    },
+    {
+      "id": "invitalia-resto-al-sud-2-0",
+      "titolo": "Resto al Sud 2.0",
+      "ente": "Ministero per il Sud / Invitalia",
+      "gestore": "Invitalia",
+      "livello": "nazionale",
+      "territori": ["Abruzzo", "Basilicata", "Calabria", "Campania", "Molise", "Puglia", "Sardegna", "Sicilia"],
+      "stato": "sportello_continuo",
+      "procedura": "cronologico",
+      "agevolazioni": ["fondo_perduto"],
+      "intensita_max_pct": 75,
+      "intensita_fondo_perduto_pct": 75,
+      "contributo_max_eur": 140000,
+      "spesa_max_eur": 200000,
+      "dimensioni_ammesse": ["micro", "piccola"],
+      "beneficiari": ["impresa", "impresa_da_costituire", "libero_professionista"],
+      "ateco_ammessi": null,
+      "categorie_spesa": ["avvio_impresa", "macchinari", "impianti", "digitale", "capitale_circolante"],
+      "calendario": {
+        "ammissibilita_spese_da": "presentazione_domanda"
+      },
+      "requisiti": [
+        {
+          "codice": "ETA_18_35",
+          "descrizione": "Titolare tra 18 e 35 anni",
+          "campo_profilo": "eta_titolare",
+          "operatore": "between",
+          "valore": [18, 35],
+          "bloccante": true
+        },
+        {
+          "codice": "RESIDENZA_MEZZOGIORNO",
+          "descrizione": "Residenza nel Mezzogiorno alla presentazione (o trasferimento entro i termini previsti)",
+          "tipo": "dichiarativo"
+        }
+      ],
+      "regime_aiuti": "de_minimis",
+      "riserve": [],
+      "documenti": ["Documento d'identità e residenza", "Business plan con piano spese", "Preventivi", "Se già costituita: visura e bilanci"],
+      "piattaforma": "Piattaforma Invitalia",
+      "fonti": [
+        {"url": "https://www.incentivimpresa.it/resto-al-sud-2-0/", "tipo": "secondaria", "titolo": "Guida Incentivimpresa"},
+        {"url": "https://www.incentivimpresa.it/bandi-fondo-perduto-attivi/", "tipo": "secondaria", "titolo": "Calendario Incentivimpresa, agg. 16/09/2026"}
+      ],
+      "ultimo_controllo": "2026-09-18",
+      "affidabilita_dati": "secondaria",
+      "note": [
+        "75% a fondo perduto fino a 120.000 € di programma, 70% tra 120.001 e 200.000 €: quindi max 140.000 € di contributo",
+        "Nessuna componente di finanziamento agevolato (a differenza del vecchio Resto al Sud)"
+      ],
+      "tag": ["giovani", "avvio impresa", "mezzogiorno", "fondo perduto"]
+    },
+    {
+      "id": "invitalia-smart-start-italia",
+      "titolo": "Smart&Start Italia",
+      "ente": "MIMIT",
+      "gestore": "Invitalia",
+      "livello": "nazionale",
+      "territori": ["IT"],
+      "stato": "sportello_continuo",
+      "procedura": "valutativa",
+      "agevolazioni": ["tasso_zero", "fondo_perduto"],
+      "intensita_max_pct": 80,
+      "intensita_fondo_perduto_pct": 30,
+      "spesa_min_eur": 100000,
+      "spesa_max_eur": 1500000,
+      "dimensioni_ammesse": ["micro", "piccola"],
+      "beneficiari": ["startup_innovativa"],
+      "ateco_ammessi": null,
+      "categorie_spesa": ["digitale", "macchinari", "ricerca_sviluppo", "consulenza", "capitale_circolante", "assunzioni"],
+      "calendario": {
+        "ammissibilita_spese_da": "presentazione_domanda"
+      },
+      "requisiti": [
+        {
+          "codice": "STARTUP_MAX_60_MESI",
+          "descrizione": "Startup innovativa costituita da non più di 60 mesi",
+          "campo_profilo": "eta_impresa_mesi",
+          "operatore": "<=",
+          "valore": 60,
+          "bloccante": true
+        }
+      ],
+      "regime_aiuti": "gber",
+      "riserve": [],
+      "documenti": ["Business plan", "Piano finanziario", "Visura con iscrizione sezione speciale startup innovative", "CV del team"],
+      "piattaforma": "Piattaforma Invitalia",
+      "fonti": [
+        {"url": "https://www.invitalia.it/incentivi-e-strumenti/smartstart-italia", "tipo": "ufficiale", "titolo": "Scheda Invitalia"},
+        {"url": "https://www.incentivimpresa.it/bandi-fondo-perduto-attivi/", "tipo": "secondaria", "titolo": "Calendario Incentivimpresa, agg. 16/09/2026"}
+      ],
+      "ultimo_controllo": "2026-09-18",
+      "affidabilita_dati": "secondaria",
+      "note": [
+        "Finanziamento a tasso zero dell'80% (90% se compagine interamente femminile o under 35)",
+        "Il 30% del finanziamento diventa fondo perduto se la sede operativa è nel Mezzogiorno",
+        "Dotazione annuale circa 200 milioni"
+      ],
+      "tag": ["startup", "innovazione", "tasso zero", "mezzogiorno"]
+    },
+    {
+      "id": "invitalia-on-tasso-zero",
+      "titolo": "ON – Oltre Nuove Imprese a Tasso Zero",
+      "ente": "MIMIT",
+      "gestore": "Invitalia",
+      "livello": "nazionale",
+      "territori": ["IT"],
+      "stato": "sportello_continuo",
+      "procedura": "valutativa",
+      "agevolazioni": ["tasso_zero"],
+      "intensita_max_pct": 90,
+      "intensita_fondo_perduto_pct": 0,
+      "spesa_max_eur": 3000000,
+      "dimensioni_ammesse": ["micro", "piccola"],
+      "beneficiari": ["impresa", "impresa_da_costituire"],
+      "ateco_ammessi": null,
+      "categorie_spesa": ["avvio_impresa", "macchinari", "impianti", "digitale", "capitale_circolante"],
+      "calendario": {
+        "ammissibilita_spese_da": "presentazione_domanda"
+      },
+      "requisiti": [
+        {
+          "codice": "IMPRESA_MAX_60_MESI",
+          "descrizione": "Impresa costituita da non oltre 60 mesi (o da costituire)",
+          "campo_profilo": "eta_impresa_mesi",
+          "operatore": "<=",
+          "valore": 60,
+          "bloccante": true
+        },
+        {
+          "codice": "GIOVANILE_O_FEMMINILE",
+          "descrizione": "Compagine a prevalenza giovanile (under 36) o femminile",
+          "tipo": "dichiarativo"
+        }
+      ],
+      "regime_aiuti": "gber",
+      "riserve": [],
+      "documenti": ["Business plan", "Piano finanziario", "Documenti dei soci"],
+      "piattaforma": "Piattaforma Invitalia",
+      "fonti": [
+        {"url": "https://www.invitalia.it/incentivi-e-strumenti/ON-nuove-imprese-tasso-zero", "tipo": "ufficiale", "titolo": "Scheda Invitalia"},
+        {"url": "https://www.incentivimpresa.it/bandi-fondo-perduto-attivi/", "tipo": "secondaria", "titolo": "Calendario Incentivimpresa, agg. 16/09/2026"}
+      ],
+      "ultimo_controllo": "2026-09-18",
+      "affidabilita_dati": "secondaria",
+      "note": ["Dal 1/7/2026 la quota a fondo perduto risulta esaurita: le nuove domande hanno solo il finanziamento a tasso zero"],
+      "tag": ["giovani", "imprese femminili", "tasso zero", "avvio impresa"]
+    },
+    {
+      "id": "mimit-nuova-sabatini",
+      "titolo": "Nuova Sabatini (beni strumentali)",
+      "ente": "MIMIT",
+      "gestore": "Banche e intermediari convenzionati",
+      "livello": "nazionale",
+      "territori": ["IT"],
+      "stato": "sportello_continuo",
+      "procedura": "automatica",
+      "agevolazioni": ["contributo_interessi"],
+      "intensita_max_pct": 10.09,
+      "intensita_fondo_perduto_pct": 10.09,
+      "spesa_min_eur": 20000,
+      "spesa_max_eur": 4000000,
+      "dimensioni_ammesse": ["micro", "piccola", "media"],
+      "beneficiari": ["impresa"],
+      "ateco_ammessi": null,
+      "ateco_esclusi": ["K"],
+      "categorie_spesa": ["macchinari", "impianti", "digitale"],
+      "calendario": {
+        "ammissibilita_spese_da": "pec_domanda_banca",
+        "termine_realizzazione": "12 mesi dalla stipula del contratto di finanziamento"
+      },
+      "requisiti": [
+        {
+          "codice": "FINANZIAMENTO_BANCARIO",
+          "descrizione": "Serve un finanziamento bancario o leasing di durata max 5 anni che copra l'investimento",
+          "tipo": "dichiarativo"
+        },
+        {
+          "codice": "BENI_NUOVI",
+          "descrizione": "Beni strumentali nuovi di fabbrica",
+          "tipo": "dichiarativo"
+        }
+      ],
+      "regime_aiuti": "esenzione_art17",
+      "riserve": [],
+      "documenti": ["Domanda via PEC alla banca prima di avviare l'investimento", "Preventivi", "Perizia per beni 4.0"],
+      "piattaforma": "Tramite banca convenzionata",
+      "fonti": [
+        {"url": "https://www.mimit.gov.it/it/incentivi/agevolazioni-per-gli-investimenti-delle-pmi-in-beni-strumentali-nuova-sabatini", "tipo": "ufficiale", "titolo": "Scheda MIMIT"},
+        {"url": "https://www.incentivimpresa.it/bandi-fondo-perduto-attivi/", "tipo": "secondaria", "titolo": "Calendario Incentivimpresa, agg. 16/09/2026"}
+      ],
+      "ultimo_controllo": "2026-09-18",
+      "affidabilita_dati": "secondaria",
+      "note": [
+        "Contributo pari al 7,72% dell'investimento per beni ordinari, 10,09% per beni 4.0 e green",
+        "NON è de minimis: non erode il plafond dei 300.000 €; cumulabile con iperammortamento e ZES Unica entro i limiti di intensità",
+        "Al 26/08/2026 la scheda MIMIT indicava oltre 1,2 miliardi disponibili"
+      ],
+      "tag": ["beni strumentali", "macchinari", "4.0", "sempre aperto"]
+    },
+    {
+      "id": "mic-cultura-cresce",
+      "titolo": "Cultura Cresce – imprese culturali e creative del Sud",
+      "ente": "Ministero della Cultura",
+      "gestore": "Invitalia",
+      "livello": "nazionale",
+      "territori": ["Basilicata", "Calabria", "Campania", "Molise", "Puglia", "Sardegna", "Sicilia"],
+      "stato": "sportello_continuo",
+      "procedura": "cronologico",
+      "agevolazioni": ["fondo_perduto", "tasso_zero"],
+      "intensita_max_pct": 80,
+      "intensita_fondo_perduto_pct": 30,
+      "spesa_max_eur": 2500000,
+      "dotazione_eur": 142450000,
+      "dimensioni_ammesse": ["micro", "piccola", "media"],
+      "beneficiari": ["impresa", "impresa_da_costituire", "impresa_sociale", "ets"],
+      "ateco_ammessi": null,
+      "categorie_spesa": ["produzione_culturale", "digitale", "macchinari", "consulenza"],
+      "calendario": {
+        "apertura_invio": "2025-12-10",
+        "ammissibilita_spese_da": "presentazione_domanda"
+      },
+      "requisiti": [
+        {
+          "codice": "FILIERA_CULTURALE",
+          "descrizione": "Progetto in una delle 8 filiere: musica; audiovisivo; teatro, danza e arti performative; patrimonio culturale; arti visive e fotografia; architettura e design; letteratura ed editoria; moda e artigianato artistico",
+          "campo_profilo": "filiera_culturale_creativa",
+          "operatore": "true",
+          "bloccante": true
+        },
+        {
+          "codice": "MOL_NON_NEGATIVO",
+          "descrizione": "Capo A e B1: due MOL negativi negli ultimi due bilanci escludono la domanda (servono 14/16 punti di sostenibilità, 6 dal MOL)",
+          "tipo": "dichiarativo"
+        }
+      ],
+      "regime_aiuti": "misto",
+      "riserve": [],
+      "documenti": ["Progetto e piano spese", "Ultimi due bilanci (MOL)", "Prospetto fonti e impieghi"],
+      "piattaforma": "Piattaforma Invitalia",
+      "fonti": [
+        {"url": "https://www.incentivimpresa.it/cultura-cresce-fino-a-151-milioni-per-imprese-creative-del-sud/", "tipo": "secondaria", "titolo": "Guida Incentivimpresa"},
+        {"url": "https://www.incentivimpresa.it/bandi-fondo-perduto-attivi/", "tipo": "secondaria", "titolo": "Calendario Incentivimpresa, agg. 16/09/2026"}
+      ],
+      "ultimo_controllo": "2026-09-18",
+      "affidabilita_dati": "secondaria",
+      "note": [
+        "Capo A e B (imprese): 80% = 30% fondo perduto + 50% tasso zero, fino a 2,5 M€; Capo C (ETS): 80% = 40% + 40%, fino a 500.000 €",
+        "Colloquio di valutazione obbligatorio; istruttoria entro 60 giorni",
+        "Al 1/9/2026: 83 domande ammesse e 24,7 M€ concessi"
+      ],
+      "tag": ["cultura", "creativo", "audiovisivo", "mezzogiorno"]
+    },
+    {
+      "id": "irfis-south-working-sicilia-2026",
+      "titolo": "South Working – incentivi al lavoro agile (Regione Siciliana)",
+      "ente": "Regione Siciliana",
+      "gestore": "IRFIS FinSicilia",
+      "livello": "regionale",
+      "territori": ["IT", "UE"],
+      "stato": "sportello_continuo",
+      "procedura": "cronologico",
+      "agevolazioni": ["fondo_perduto"],
+      "intensita_max_pct": null,
+      "intensita_fondo_perduto_pct": 100,
+      "contributo_max_eur": 30000,
+      "dotazione_eur": 18000000,
+      "dimensioni_ammesse": ["micro", "piccola", "media", "grande"],
+      "beneficiari": ["impresa"],
+      "ateco_ammessi": null,
+      "categorie_spesa": ["assunzioni"],
+      "calendario": {
+        "apertura_invio": "2026-06-30",
+        "chiusura": "2026-12-31",
+        "orario_chiusura": "fino a esaurimento del plafond annuale; misura triennale 2026-2028",
+        "ammissibilita_spese_da": "2026-01-09"
+      },
+      "requisiti": [
+        {
+          "codice": "UNITA_FUORI_SICILIA",
+          "descrizione": "Impresa con unità produttiva fuori dalla Sicilia (resto d'Italia, UE o extra UE): la misura finanzia chi assume siciliani da remoto",
+          "campo_profilo": "unita_produttiva_fuori_sicilia",
+          "operatore": "true",
+          "bloccante": true
+        },
+        {
+          "codice": "ASSUNZIONI_POST_9_1_2026",
+          "descrizione": "Nuove assunzioni a tempo indeterminato (o trasformazioni da determinato) stipulate dopo il 9/1/2026",
+          "campo_profilo": "assunzioni_indeterminato_dopo_2026_01_09",
+          "operatore": ">=",
+          "valore": 1,
+          "bloccante": true
+        },
+        {
+          "codice": "RESIDENZA_LAVORATORE",
+          "descrizione": "Lavoratore residente in Sicilia alla data della concessione",
+          "tipo": "dichiarativo"
+        },
+        {
+          "codice": "AGILE_5_ANNI",
+          "descrizione": "Prestazione svolta in Sicilia in modalità prevalentemente agile per almeno 5 anni, con presenza in sede non oltre il 20% dei giorni lavorativi annui",
+          "tipo": "dichiarativo"
+        }
+      ],
+      "regime_aiuti": "de_minimis",
+      "riserve": [],
+      "documenti": ["Contratto di assunzione/trasformazione", "Accordo di lavoro agile", "Certificato di residenza del lavoratore", "DURC"],
+      "piattaforma": "Piattaforma telematica IRFIS",
+      "fonti": [
+        {"url": "https://www.irfis.it/wp-content/uploads/2026/04/South-working-Art.-3_Avviso.pdf", "tipo": "ufficiale", "titolo": "Avviso IRFIS art. 3 L.R. 1/2026"},
+        {"url": "https://www.regione.sicilia.it/la-regione-informa/south-working-apre-piattaforma-irfis-presentazione-domande", "tipo": "ufficiale", "titolo": "Regione Siciliana, 30/06/2026"},
+        {"url": "https://www.agi.it/economia/news/2026-04-15/incentivi-sicilia-south-working-36597939/", "tipo": "secondaria", "titolo": "AGI"}
+      ],
+      "ultimo_controllo": "2026-09-18",
+      "affidabilita_dati": "ufficiale",
+      "note": [
+        "30.000 € per lavoratore, erogati in 5 quote annuali da 6.000 €",
+        "Non è per le imprese siciliane: è per le imprese di fuori che assumono residenti in Sicilia. Rileva per un consulente siciliano con clienti al Nord o all'estero",
+        "Plafond 18 M€/anno per il triennio 2026-2028 nel Fondo Sicilia"
+      ],
+      "tag": ["sicilia", "assunzioni", "lavoro agile", "rientro talenti"]
+    },
+    {
+      "id": "zes-unica-credito-imposta-2026",
+      "titolo": "ZES Unica Mezzogiorno – credito d'imposta investimenti 2026",
+      "ente": "Agenzia delle Entrate / Struttura di missione ZES",
+      "gestore": "Agenzia delle Entrate",
+      "livello": "nazionale",
+      "territori": ["Abruzzo", "Basilicata", "Calabria", "Campania", "Molise", "Puglia", "Sardegna", "Sicilia"],
+      "stato": "aperto",
+      "procedura": "automatica",
+      "agevolazioni": ["credito_imposta"],
+      "intensita_max_pct": null,
+      "intensita_fondo_perduto_pct": null,
+      "dimensioni_ammesse": ["micro", "piccola", "media", "grande"],
+      "beneficiari": ["impresa"],
+      "ateco_ammessi": null,
+      "categorie_spesa": ["macchinari", "impianti"],
+      "calendario": {
+        "chiusura": "2026-12-31",
+        "orario_chiusura": "termine per la realizzazione degli investimenti",
+        "ammissibilita_spese_da": "comunicazione_preventiva",
+        "termine_realizzazione": "31/12/2026"
+      },
+      "requisiti": [
+        {
+          "codice": "COMUNICAZIONE_ADE",
+          "descrizione": "Comunicazione preventiva e integrativa all'Agenzia delle Entrate nelle finestre stabilite dal provvedimento 2026: verificare le date",
+          "tipo": "dichiarativo"
+        },
+        {
+          "codice": "STRUTTURA_PRODUTTIVA_ZES",
+          "descrizione": "Investimenti in beni strumentali nuovi destinati a strutture produttive già esistenti o nuove nella ZES Unica",
+          "tipo": "dichiarativo"
+        }
+      ],
+      "regime_aiuti": "gber",
+      "riserve": [],
+      "documenti": ["Comunicazione AdE", "Certificazione revisore sulle spese", "Fatture con dicitura ZES"],
+      "piattaforma": "Agenzia delle Entrate",
+      "fonti": [
+        {"url": "https://www.incentivimpresa.it/zes-unica/", "tipo": "secondaria", "titolo": "Guida Incentivimpresa"},
+        {"url": "https://incentivisicilia.it/", "tipo": "secondaria", "titolo": "Incentivi Sicilia"}
+      ],
+      "ultimo_controllo": "2026-09-18",
+      "affidabilita_dati": "da_verificare",
+      "note": [
+        "Scheda incompleta: percentuali (dipendono da regione e dimensione), soglie e finestre di comunicazione 2026 vanno lette sul provvedimento AdE",
+        "Cumulabile con Nuova Sabatini entro i limiti di intensità"
+      ],
+      "tag": ["credito imposta", "ZES", "mezzogiorno", "investimenti"]
+    },
+    {
+      "id": "mimit-brevetti-plus-2026",
+      "titolo": "Brevetti+ 2026",
+      "ente": "MIMIT",
+      "gestore": "Invitalia",
+      "livello": "nazionale",
+      "territori": ["IT"],
+      "stato": "in_apertura",
+      "procedura": "cronologico",
+      "agevolazioni": ["fondo_perduto"],
+      "intensita_max_pct": 80,
+      "intensita_fondo_perduto_pct": 80,
+      "contributo_max_eur": 140000,
+      "dotazione_eur": 20000000,
+      "dimensioni_ammesse": ["micro", "piccola", "media"],
+      "beneficiari": ["impresa"],
+      "ateco_ammessi": null,
+      "categorie_spesa": ["proprieta_intellettuale", "consulenza"],
+      "calendario": {
+        "ammissibilita_spese_da": "presentazione_domanda"
+      },
+      "requisiti": [
+        {
+          "codice": "BREVETTO",
+          "descrizione": "Titolarità di un brevetto concesso (o domanda con rapporto di ricerca positivo) da valorizzare",
+          "campo_profilo": "brevetto_registrato",
+          "operatore": "true",
+          "bloccante": true
+        }
+      ],
+      "regime_aiuti": "de_minimis",
+      "riserve": [],
+      "documenti": ["Attestato di concessione o domanda di brevetto", "Piano di valorizzazione", "Preventivi dei fornitori di servizi specialistici"],
+      "piattaforma": "Piattaforma Invitalia",
+      "fonti": [
+        {"url": "https://bandi.contributiregione.it/regione/sicilia", "tipo": "secondaria", "titolo": "Contributi Regione – Sicilia"}
+      ],
+      "ultimo_controllo": "2026-09-18",
+      "affidabilita_dati": "da_verificare",
+      "note": [
+        "Apertura prevista entro settembre 2026, data non ancora pubblicata al 18/09",
+        "Fino all'85% con certificazione di parità di genere, fino al 100% in contitolarità con ente di ricerca"
+      ],
+      "tag": ["brevetti", "proprietà intellettuale", "innovazione"]
+    },
+    {
+      "id": "euipo-sme-fund-2026",
+      "titolo": "EUIPO SME Fund 2026 – voucher marchi, disegni e brevetti",
+      "ente": "EUIPO (Commissione Europea)",
+      "gestore": "EUIPO",
+      "livello": "ue",
+      "territori": ["UE"],
+      "stato": "aperto",
+      "procedura": "cronologico",
+      "agevolazioni": ["voucher"],
+      "intensita_max_pct": 75,
+      "intensita_fondo_perduto_pct": 75,
+      "contributo_max_eur": 7320,
+      "dotazione_eur": 23000000,
+      "dimensioni_ammesse": ["micro", "piccola", "media"],
+      "beneficiari": ["impresa", "libero_professionista"],
+      "ateco_ammessi": null,
+      "categorie_spesa": ["proprieta_intellettuale"],
+      "calendario": {
+        "apertura_invio": "2026-02-02",
+        "chiusura": "2026-12-04",
+        "ammissibilita_spese_da": "concessione"
+      },
+      "requisiti": [
+        {
+          "codice": "VOUCHER_PRIMA_DEL_DEPOSITO",
+          "descrizione": "Il voucher va richiesto e ottenuto PRIMA di depositare il marchio/disegno; poi si deposita e si chiede il rimborso",
+          "tipo": "dichiarativo"
+        }
+      ],
+      "regime_aiuti": "fuori_regime",
+      "riserve": [],
+      "documenti": ["Certificato IVA", "Estratto conto bancario dell'impresa", "Dichiarazione PMI"],
+      "piattaforma": "Portale EUIPO SME Fund",
+      "fonti": [
+        {"url": "https://www.euipo.europa.eu/it/sme-corner/sme-fund/2026", "tipo": "ufficiale", "titolo": "EUIPO SME Fund 2026"},
+        {"url": "https://www.incentivimpresa.it/bandi-fondo-perduto-attivi/", "tipo": "secondaria", "titolo": "Calendario Incentivimpresa, agg. 16/09/2026"}
+      ],
+      "ultimo_controllo": "2026-09-18",
+      "affidabilita_dati": "secondaria",
+      "note": [
+        "Rimborso 75% delle tasse per marchi e disegni UE/nazionali, 50% fuori UE, 90% sull'IP Scan",
+        "Alcune linee di voucher si esauriscono prima della scadenza: verificare disponibilità residua sul portale"
+      ],
+      "tag": ["marchi", "design", "proprietà intellettuale", "UE", "piccolo importo"]
+    },
+    {
+      "id": "unioncamere-conciliazione-vita-lavoro-2026",
+      "titolo": "Certificazione conciliazione vita-lavoro (UNI/PdR 192:2026) – avviso Unioncamere",
+      "ente": "Dip. Politiche per la famiglia e Dip. Pari opportunità",
+      "gestore": "Unioncamere",
+      "livello": "nazionale",
+      "territori": ["IT"],
+      "stato": "in_apertura",
+      "procedura": "cronologico",
+      "agevolazioni": ["voucher", "fondo_perduto"],
+      "intensita_max_pct": 100,
+      "intensita_fondo_perduto_pct": 100,
+      "contributo_max_eur": 14459.01,
+      "dotazione_eur": 7500000,
+      "dimensioni_ammesse": ["micro", "piccola", "media", "grande"],
+      "beneficiari": ["impresa"],
+      "ateco_ammessi": null,
+      "categorie_spesa": ["welfare_conciliazione", "consulenza"],
+      "calendario": {
+        "apertura_invio": "2026-09-21",
+        "chiusura": "2027-03-31",
+        "orario_chiusura": "16:00, salvo esaurimento anticipato",
+        "ammissibilita_spese_da": "presentazione_domanda",
+        "termine_realizzazione": "certificazione entro il 30/06/2027, pena decadenza"
+      },
+      "requisiti": [
+        {
+          "codice": "ALMENO_1_DIPENDENTE",
+          "descrizione": "Almeno un dipendente",
+          "campo_profilo": "dipendenti_totali",
+          "operatore": ">=",
+          "valore": 1,
+          "bloccante": true
+        },
+        {
+          "codice": "DURC",
+          "descrizione": "DURC in regola",
+          "campo_profilo": "durc_regolare",
+          "operatore": "true",
+          "bloccante": true
+        },
+        {
+          "codice": "PRESCREENING",
+          "descrizione": "Pre-screening online superato (attivo dal 21/09/2026) e preventivo firmato dell'organismo di certificazione",
+          "tipo": "dichiarativo"
+        }
+      ],
+      "regime_aiuti": "de_minimis",
+      "riserve": ["60% delle risorse riservato alle PMI", "5% riservato a imprese con rating di legalità"],
+      "documenti": ["Esito pre-screening", "Preventivo firmato dell'organismo di certificazione", "DURC"],
+      "piattaforma": "Piattaforma ReStart (Unioncamere)",
+      "fonti": [
+        {"url": "https://conciliazionevitalavoro.unioncamere.gov.it/bando", "tipo": "ufficiale", "titolo": "Avviso Unioncamere"},
+        {"url": "https://www.incentivimpresa.it/bandi-fondo-perduto-attivi/", "tipo": "secondaria", "titolo": "Calendario Incentivimpresa, agg. 16/09/2026"}
+      ],
+      "ultimo_controllo": "2026-09-18",
+      "affidabilita_dati": "secondaria",
+      "note": [
+        "Voucher di assistenza tecnica fino a 2.459,01 € (6 giornate erogate da Unioncamere) + contributo per l'audit da 1.800 a 12.000 € in base agli addetti; +450 € se già certificata parità di genere o Family Audit",
+        "La certificazione è presupposto per l'esonero contributivo fino all'1% (max 50.000 €/anno) 2026-2028 del DL 62/2026, decreto attuativo non ancora pubblicato"
+      ],
+      "tag": ["welfare", "certificazione", "PMI", "de minimis"]
+    },
+    {
+      "id": "mintur-green-tour-2026",
+      "titolo": "Green Tour – riqualificazione sostenibile strutture turistiche",
+      "ente": "Ministero del Turismo",
+      "gestore": "Invitalia",
+      "livello": "nazionale",
+      "territori": ["IT"],
+      "stato": "in_chiusura",
+      "procedura": "graduatoria",
+      "agevolazioni": ["fondo_perduto", "finanziamento_agevolato"],
+      "intensita_max_pct": null,
+      "intensita_fondo_perduto_pct": null,
+      "spesa_min_eur": 1000000,
+      "spesa_max_eur": 15000000,
+      "dotazione_eur": 109000000,
+      "dimensioni_ammesse": ["micro", "piccola", "media", "grande"],
+      "beneficiari": ["impresa"],
+      "ateco_ammessi": ["I", "55", "56"],
+      "categorie_spesa": ["riqualificazione_turistica", "efficienza_energetica", "rinnovabili"],
+      "calendario": {
+        "chiusura": "2026-09-30",
+        "orario_chiusura": "17:00 (prorogato dal 15/09 con DD n. 112 del 03/09/2026)",
+        "ammissibilita_spese_da": "presentazione_domanda",
+        "termine_realizzazione": "18 mesi dalla concessione e comunque entro il 30/09/2028"
+      },
+      "requisiti": [
+        {
+          "codice": "51_INTERVENTI_TRAINANTI",
+          "descrizione": "Almeno il 51% dell'investimento su interventi trainanti di efficientamento energetico e rinnovabili",
+          "tipo": "dichiarativo"
+        },
+        {
+          "codice": "DIAGNOSI_ENERGETICA",
+          "descrizione": "Diagnosi energetica e progetto tecnico: pesano in graduatoria molto più della tempestività",
+          "tipo": "dichiarativo"
+        }
+      ],
+      "regime_aiuti": "gber",
+      "riserve": ["60% delle risorse riservato alle PMI del comparto turistico"],
+      "documenti": ["Diagnosi energetica", "Progetto tecnico", "Piano economico-finanziario", "Accesso con SPID/CNS/CIE"],
+      "piattaforma": "Piattaforma Invitalia Fondo GreenTour",
+      "fonti": [
+        {"url": "https://www.invitalia.it/incentivi-e-strumenti/fondo-greentour", "tipo": "ufficiale", "titolo": "Scheda Invitalia"},
+        {"url": "https://www.incentivimpresa.it/bandi-fondo-perduto-attivi/", "tipo": "secondaria", "titolo": "Calendario Incentivimpresa, agg. 16/09/2026"}
+      ],
+      "ultimo_controllo": "2026-09-18",
+      "affidabilita_dati": "secondaria",
+      "note": ["59 M€ a fondo perduto + 50 M€ di finanziamento agevolato", "Procedura a graduatoria: la data di invio non dà punteggio"],
+      "tag": ["turismo", "energia", "riqualificazione", "in chiusura"]
+    },
+    {
+      "id": "gse-conto-termico-3-0",
+      "titolo": "Conto Termico 3.0",
+      "ente": "MASE",
+      "gestore": "GSE",
+      "livello": "nazionale",
+      "territori": ["IT"],
+      "stato": "sportello_continuo",
+      "procedura": "automatica",
+      "agevolazioni": ["fondo_perduto"],
+      "intensita_max_pct": 65,
+      "intensita_fondo_perduto_pct": 65,
+      "dotazione_eur": 900000000,
+      "dimensioni_ammesse": ["micro", "piccola", "media", "grande"],
+      "beneficiari": ["impresa", "ets"],
+      "ateco_ammessi": null,
+      "categorie_spesa": ["efficienza_energetica", "rinnovabili"],
+      "calendario": {
+        "ammissibilita_spese_da": "richiesta_preliminare"
+      },
+      "requisiti": [
+        {
+          "codice": "RICHIESTA_PRELIMINARE",
+          "descrizione": "Imprese ed ETS economici devono trasmettere al GSE la richiesta preliminare di accesso PRIMA dell'avvio dei lavori, pena inammissibilità",
+          "tipo": "dichiarativo"
+        }
+      ],
+      "regime_aiuti": "gber",
+      "riserve": ["200 M€/anno riservati alla pubblica amministrazione"],
+      "documenti": ["Richiesta preliminare GSE", "Schede tecniche degli interventi", "Fatture e bonifici parlanti a fine lavori"],
+      "piattaforma": "Portaltermico GSE",
+      "fonti": [
+        {"url": "https://www.gse.it/servizi-per-te/efficienza-energetica/conto-termico-3-0", "tipo": "ufficiale", "titolo": "Scheda GSE"},
+        {"url": "https://www.incentivimpresa.it/bandi-fondo-perduto-attivi/", "tipo": "secondaria", "titolo": "Calendario Incentivimpresa, agg. 16/09/2026"}
+      ],
+      "ultimo_controllo": "2026-09-18",
+      "affidabilita_dati": "secondaria",
+      "note": ["Massimali variabili per tipologia (pompe di calore, solare termico, caldaie a biomassa)", "Possibile passare da una ESCo per interventi complessi"],
+      "tag": ["energia", "efficienza", "rinnovabili", "sempre aperto"]
+    }
+  ]
+}

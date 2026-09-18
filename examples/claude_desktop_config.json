@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "bandi": {
+      "command": "python",
+      "args": ["-m", "bandi_mcp.server"],
+      "cwd": "/PERCORSO/ASSOLUTO/bandi-mcp"
+    }
+  }
+}

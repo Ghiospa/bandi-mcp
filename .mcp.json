@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "bandi": {
+      "type": "stdio",
+      "command": "python",
+      "args": ["-m", "bandi_mcp.server"]
+    }
+  }
+}
